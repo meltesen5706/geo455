@@ -1,5 +1,8 @@
 <!DOCTYPE html> <!--standard code to start an html file-->
 <html>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +10,9 @@
         <meta name="description" content="An interactive getting started guide">
         <link rel="stylesheet" href="main.css">
         <style>
+        a {
+            color: darkblue
+            }
         .container {
             display: flex;
             width: 100%;
@@ -16,35 +22,33 @@
             flex: 1;
             padding: 20px;
             box-sizing: border-box;
-            border: 1px solid #ebe4d9;
+            border: 2px solid #ebe4d9;
+            font-family: Calibri, sans-serif;
         }
         #right{
             flex: 1;
             padding: 20px;
             box-sizing: border-box;
-            border: 1px solid #ebe4d9;    
-            
+            border: 2px solid #ebe4d9;
+            font-family: Calibri, sans-serif;
         }
        
         </style>
     </head>
     <body bgcolor="#f4f0ea">
-        
-        <h1 style="text-align: center; background-color: #ebe4d9">GEO 455: WEBMAPPING (SP 24)</h1><!-- you can replace the heading to your name or something else that best represent your webpage-->
+       <h1 style="text-align: center; background-color: #ebe4d9; padding: 6px; font-family: Calibri, sans-serif; ">GEO 455: WEBMAPPING (SP 24)</h1>
+        <!--About me-->
         <div class="container">
         <div id="left">
-            
-        <!--About me-->
-        <div style="border: 1px #ebe4d9; border-style:solid;margin-bottom: 5px"> 
-        <h2 style="margin-left: 8px">About me</h2>
-        <p style="margin: 8px">
-            Hi! My name is Madeline. I'm an Archaeological Studies major at the University of Wisconsin-La Crosse with minors in History, Earth Science, and Geoarchaeology. <br><br>
-            
+        <div style="border: solid 3px #ebe4d9; border-radius: 8px;margin-bottom: 8px;padding: 5px"> 
+        <h2 style="margin-left: 10px;margin-bottom: 0px">About me</h2>
+        <p style="margin: 10px">
+            Hi! My name is Madeline. I'm an Archaeological Studies major at the University of Wisconsin-La Crosse with minors in History, Earth Science, and Geoarchaeology. My interests lie in combining archaeology and GIS/mapping methods to learn more about the past. <br><br>
         </p>
         </div> 
             
-          <section style="border: 1px #ebe4d9; border-style:solid;margin-bottom: 5px">
-        <h3 style="margin: 8px">Lab Assignments</h3> <!--create list and hyperlinks-->
+          <section style="border: solid 3px #ebe4d9; border-radius: 8px;margin-bottom: 8px;padding: 5px">
+        <h3 style="margin: 10px">Lab Assignments</h3> <!--create list and hyperlinks-->
          <ol>
              <li><a href="lab_1/geo455_lab1.html">Lab 1</a></li>
              <li><a href="lab_2/geo455_lab2.html">Lab 2</a></li>
@@ -57,8 +61,8 @@
              <li><a href="lab_9/geo455_lab9.html">Lab 9</a></li>
         </ol>
         </section> 
-        <section style="border: 1px #ebe4d9; border-style:solid">
-        <h3 style="margin: 8px">Exercises</h3>
+        <section style="border: solid 3px #ebe4d9; border-radius: 8px; padding: 5px">
+        <h3 style="margin: 10px">Exercises</h3>
          <ol>
             <li><a href="ex_1/geo455_ex1.html">Ex 1</a></li>
             <li><a href="ex_2/geo455_ex2.html">Ex 2</a></li>
@@ -72,13 +76,12 @@
         </div>
         
         <div id="right">
-        <div>  
+        <div style="border: solid 3px #ebe4d9; border-radius: 8px; padding: 10px">  
             <img src="profile_pic.jpg" width="400"><br>
-            Email me: 
+            <b>Email me:</b> 
             <a href="mailto:meltesen5706@uwlax.edu">meltesen5706@uwlax.edu</a>
         </div>
        
-        
         </div>
         </div>
     </body>
