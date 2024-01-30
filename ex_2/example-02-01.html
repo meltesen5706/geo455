@@ -7,17 +7,20 @@
         <title>CSS conflicts</title>
         <style>
             * { font-family: Arial, Verdana, sans-serif; }
-            h1 { font-family: "Courier New", monospace; }
-            i { color: green; }
+            h1 { font-family: "Courier New", monospace; color: black}
+            h2 {color: purple; font-family: Verdana, sans-serif; font-size: 130%}
+            h3 i { color: green; }
             i { color: red; }
             b { color: pink; }
-            p b { color: #ccccff; }
+            p b { color: blue; }
             #intro { font-size: 100%; }
             p {font-family: 'Raleway', sans-serif;}
         </style>
     </head>
     <body>
         <h1>This is a first-level heading</h1>
+        <h2>This is a second-level heading so it is purple with the Verdana font</h2>
+        <h3>This is a <i>third-level</i> heading and the italics should be green</h3>
         <p id="intro">This is the <i>introduction</i> paragraph. It has an <b>'id' attribute with the value of "intro"</b>. It is styled differently from all other paragraphs, using a CSS rule with an <i>ID Selector</i>.</p>
         <p>This is the <i>second</i> paragraph. It <b>does not</b> have an 'id' attribute.</p>
         <p>This is the <i>third</i> paragraph. It <b>also does not</b> have an 'id' attribute.</p>
