@@ -2,9 +2,104 @@
 <html>
     <head>
        <title>geo455_lab4</title>
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="map_lab4.js"></script>
+        <style type="text/css">
+#container {
+	height: relative;
+	width: relative;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+#container #map {
+	background-color:lightgray;
+	height: 850px;
+    border: solid white 2px;
+    }
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #000000;
+    color: #ffffff;
+    }
+#description {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 280px;
+    padding: 0px 15px;
+    background-color: rgba(255,255,255,0.7);
+    border: 1px solid grey;
+    border-radius: 3px;
+    z-index: 800;
+    }
+#container #header {
+    font-size: 2em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 6px 15px;
+    background-color:rgba(245, 245, 245,0.75);
+    border: 2px solid white;
+    text-align: center;
+    }
+#container #leftMenu {
+	position: static;
+    background-color: whitesmoke;
+	width: 220px;
+    top: 100px;
+    left: 50px;
+	float: left;
+	height: 830px;
+	margin: 0px;
+    font-size: 1.1em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 10px 15px;
+    border: 2px solid white;
+    z-index: 800;
+}
+#container #footer {
+    clear: both;
+	font-family: "calibri", sans-serif;
+	font-size: 1em;
+    letter-spacing: .04em;
+	height: 25px;
+	background-color: rgba(245, 245, 245,0.75);
+    border: 2px solid white;
+	text-align: center;
+	padding-top: 4px;
+	font-style: italic;
+}
+body {
+	background-color:darkgrey;
+}
+</style>
+
     </head>
-         <body bgcolor="#EDDD9E">
-       <h1 align="center">Lab 4</h1>
-       
+    <body>
+        <div id="container">
+            <div id="header">Lab 4: New Seven Wonders of the World</div>
+            <div id="leftMenu">
+                <p>In this assignment, we are working with layer controls. We have three layers, landmarks, basemap, and SRTM 30m hillshade map using WMS service. Landmarks are based on encyclopedia Britannica's entry on <a href="https://www.britannica.com/list/new-seven-wonders-of-the-world">New Seven Wonders of the World</a> and the images are linked from Wikipedia Common images</p>
+                <p>Here is a list of the wonders:</p>
+                    <ol type="1">
+                        <li>Great Wall of China</li>
+                        <li>Chichen-Itza</li>
+                        <li>Petra</li>
+                        <li>Machu Pichu</li>
+                        <li>Christ the Redeemer</li>
+                        <li>Colosseum</li>
+                        <li>Taj Mahal</li>
+                    </ol>
+                <p style="margin-top: 0px"><a style="color: darkblue" href='../index.html'>Go back to main page</a></p>
+                </div>                
+            <div id="map"></div>
+                <script src="map_lab4.js"></script>
+            <div id="footer">Map developed by Madeline Meltesen</div>
+        </div>
      </body>
 </html>
