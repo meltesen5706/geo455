@@ -4,89 +4,91 @@
        <title>geo455_lab3</title>
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-
-        xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-
-        XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                background-color: "whitesmoke";
-                font-family: "Noto Sans", sans-serif;
-                color: #3d3d3d;
-            }
-            #title {
-                position: center;
-                margin-top: 0;
-                top: 10px;
-                left: 50px;
-                font-size: 2em;
-                font-family: "Lora", serif;
-                letter-spacing: .04em;
-                padding: 10px 15px;
-                background-color: rgba(255, 255, 255, 0.5);
-                border: 1px solid grey;
-                border-radius: 3px;
-                z-index: 800;
-            }
-            #description h2 {
-                font-family: "Lora", serif;
-                letter-spacing: .04em;
-            }
-            #map {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                width: 100%;
-            }
-            #description {
-                position:left;
-                bottom: 50px;
-                left: 10px;
-                width: 280px;
-                padding: 0px 15px;
-                background-color: rgba(255, 255, 255, 0.7);
-                border: 1px solid grey;
-                border-radius: 3px;
-                z-index: 800;
-            }
-            #description p {
-                font-size: .9em;
-                line-height: 1.5em;
-            }
-            #description a {
-                color: #005daa;
-                text-decoration: none;
-            }
-            #description a:hover {
-                text-decoration: underline;
-            }
-            footer{ 
-                position: bottom;
-                margin-top: 0;
-                top: 10px;
-                left: 50px;
-                font-size: 2em;
-                font-family: "Lora", serif;
-                letter-spacing: .04em;
-                padding: 10px 15px;
-                background-color: rgba(255, 255, 255, 0.5);
-                border: 1px solid grey;
-                border-radius: 3px;
-                z-index: 800;
-            }
-        </style>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="map_lab3.js"></script>
+        <style type="text/css">
+#container {
+	height: relative;
+	width: relative;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+#container #map {
+	background-color:lightgray;
+	height: 850px;
+    border: solid white 2px;
+    }
+#container #header {
+    font-size: 2em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 6px 15px;
+    background-color:rgba(245, 245, 245,0.75);
+    border: 2px solid white;
+    text-align: center;
+    }
+#container #leftMenu {
+	position: static;
+    background-color: whitesmoke;
+	width: 300px;
+    top: 100px;
+    left: 50px;
+	float: left;
+	height: 830px;
+	margin: 0px;
+    font-size: 1.1em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 10px 15px;
+    border: 2px solid white;
+    z-index: 800;
+}
+#container #footer {
+    clear: both;
+	font-family: "calibri", sans-serif;
+	font-size: 1em;
+    letter-spacing: .04em;
+	height: 25px;
+	background-color: rgba(245, 245, 245,0.75);
+    border: 2px solid white;
+	text-align: center;
+	padding-top: 4px;
+	font-style: italic;
+}
+body {
+	background-color:darkgrey;
+}
+</style>
+
     </head>
     <body>
-        <h1 id="title">Lab 3</h1>
-        <div id="map"></div>
-        <div id="description">
-            <h2>About this assignment</h2>
-            <p>This is the final result of the <a href="https://leafletjs.com/examples/quick-start/" target="_blank">Leaflet Quick Start Guide</a>. The map demonstrates Leaflet basics, such as setting up a Leaflet map, adding markers, and popups.</p>
-            <p>The placement and styling of the title and description boxes is done using CSS. Check out the source code of this page to see how.</p>
-           <p>Map authored by XXX</p>
+        <div id="container">
+            <div id="header">Lab 3: Must-See Places in Chicago</div>
+            <div id="leftMenu">
+                <p>Growing up in the Chicago suburbs, I spent lots of time downtown with my family. Now, when I have friends visit from out of state, I have a list of places to show them around the city. Here is that list in alphabetical order:</p>
+                    <ol type="1">
+                        <li>Adler Planetarium</li>
+                        <li>Art Institute of Chicago</li>
+                        <li>Buckingham Fountain</li>
+                        <li>Cloud Gate</li>
+                        <li>Field Museum</li>
+                        <li>Gino’s East</li>
+                        <li>Lincoln Park Zoo</li>
+                        <li>Museum Of Contemporary Art</li>
+                        <li>Navy Pier</li>
+                        <li>North Avenue Beach</li>
+                        <li>Shedd Aquarium</li>
+                    </ol>
+                <p style="margin-bottom: 0px"><img style="width: relative; height: 350px;" src="images/buckingham_fountain.jpg" alt="Buckingham Fountain"></p>
+                <p style="margin-top: 0px;margin-bottom: 0px"><i><sup>Photo Credits: Madeline Meltesen (2021)</sup></i></p>
+                <p style="margin-top: 0px"><a style="color: darkblue" href='../index.html'>Go back to main page</a></p>
+                </div>                
+            <div id="map"></div>
+                <script src="map_lab3.js"></script>
+            <div id="footer">Map developed by Madeline Meltesen</div>
         </div>
-        <script src="map.js"></script>
-    </body>
+     </body>
 </html>
