@@ -2,9 +2,91 @@
 <html>
     <head>
        <title>geo455_lab5</title>
+            <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+            <script src="map_lab5.js"></script>
+            <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+            <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+        <style type="text/css">
+#container {
+	height: relative;
+	width: relative;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+#container #map {
+	background-color:rgb(117, 207, 240);
+	height: 930px;
+    border: solid white 2px;
+    }
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #000000;
+    color: #ffffff;
+    }
+#container #header {
+    font-size: 2em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 4px 15px;
+    background-color:rgba(221, 228, 186,1);
+    border: 2px solid white;
+    text-align: center;
+    }
+            
+#title {
+    position: fixed;
+    margin-top: 0;
+    top: 20px;
+    left: 70px;
+    font-size: 2em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid grey;
+    border-radius: 3px;
+    z-index: 800;
+}
+            
+#description {
+        font-family: "calibri", sans-serif;
+        color: #3b3b3b;
+        position: fixed;
+        bottom: 75px;
+        right: 20px;
+        width: 270px;
+        height: 265px;
+        padding: 0px 15px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid grey;
+        border-radius: 3px;
+        z-index: 800;        
+}
+body {
+	background-color:#1489b4;
+}
+</style>
+
     </head>
-         <body bgcolor="#EDDD9E">
-       <h1 align="center">Lab 5</h1>
-       
+    <body>
+        <div id="container">
+            <div id="title"><b>Lab 5: Wonders of the World</b></div>
+            <div id="description">
+                <h2 style="margin-top: 10px">Where is the International Space Station?</h2>
+                <p style="margin-bottom: 0px"><img style="width: relative; height: 50px;" src="images/iss200.png" alt="ISS"></p>
+                <p style="font-size: 110%">Latitude: <span id="lat"></span>°<br>
+                   Longitude: <span id="lon"></span>°</p>
+                <p style="font-size: 80%"> Map authored by Madeline Meltesen <br>
+                <a style="color: darkblue" href='../index.html'>Go back to main page</a></p>
+                </div>                
+            <div id="map"></div>
+                <script src="map_lab5.js"></script>
+                </div>
      </body>
 </html>
