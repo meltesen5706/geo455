@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body bgcolor=lightgrey>
 
     <h2>JavaScript Flow Controls</h2>
 
     <p id="happy day"></p>
     <p id="good_night"></p>
     <p id="good_all"></p>
-
+    <p id="meal"></p>
 
 
     <script>
@@ -37,6 +37,22 @@
         document.getElementById("good_all").innerHTML = greeting;
         
         
+        if (hour < 9) {
+            greeting = "Breakfast Time!";
+        } else if (hour <11){
+            greeting = "Brunch Time!";
+        } else if (hour <14){
+            greeting = "Lunch Time!";
+        } else if (hour <17){
+            greeting = "Tea Time!";
+        } else if (hour <20){
+            greeting = "Dinner Time!";
+        } else if (hour <23){
+            greeting = "Dessert Time!";
+        } else {
+            greeting = "Bed Time!";
+        }
+        document.getElementById("meal").innerHTML = greeting;
 
     
 

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body bgcolor=lightpink>
 
     <h2>JavaScript Functions</h2>
 
     <p id="multiply"></p>
+    <p id="squareRoot"></p>
     <p id="greet"></p>
     <p id="f2c"></p>
     <p id="method"></p>
     <p id="method1"></p>
+    <p id="method2"></p>
+    <p id="method3"></p>
     <p id="len1"></p>
     <p id="len2"></p>
     <p id="pop_method"></p>
@@ -22,11 +25,16 @@
             return p1 * p2;
         };
         
-        document.getElementById("multiply").innerHTML = "This is result of multiply function: "+ multiply(417, 162);
+        function sqareRoot(number) {
+            return Math.sqrt(number);
+        };
+        
+        document.getElementById("multiply").innerHTML = "This is result of multiply function: "+ multiply(233, 28);
         // change the parameters and check ..
         
         // create a function to return square root of a number ..
         
+        document.getElementById("squareRoot").innerHTML = "This is result of square root function: "+ Math.sqrt(36);
 
         
         function greeting() {
@@ -41,7 +49,7 @@
             return (5/9) * (f-32);
         };
         
-        document.getElementById("f2c").innerHTML = "Today's temperature in Celsius is: " + to_Celsius(-2);
+        document.getElementById("f2c").innerHTML = "Today's temperature in Celsius is: " + to_Celsius(37)+" °C";
         
         
         
@@ -56,6 +64,17 @@
         document.getElementById("method1").innerHTML = person.fullName().toUpperCase() + " loved to play video games.";
         
         
+        var me = {
+            firstName: "Madeline",
+            lastName: "Meltesen",
+            age: 21,
+            eyeColor: "brown",
+            fullName: function() {return this.firstName + " " + this.lastName;}
+        };
+        document.getElementById("method2").innerHTML = me.fullName();
+        document.getElementById("method3").innerHTML = me.fullName().toUpperCase() + " loves to play the guitar.";
+        
+                
         var a = [1, 7, 15, 16, 7, [3, 4]];
         document.getElementById("len1").innerHTML = "The length of the variable is: " + a.length;
         document.getElementById("len2").innerHTML = "The length of the 5th element is: " + a[5].length;  
@@ -64,11 +83,10 @@
         var midwest = ["Wisconsin", "New York", "Stoughton", "Illinois"];
         midwest.pop();
         document.getElementById("pop_method").innerHTML = midwest; //removes the last element
+        
         midwest.push("Michigan");
         document.getElementById("push_method").innerHTML = midwest;// adds michigan at the end
         
-
-
     
 
     </script>
