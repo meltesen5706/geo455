@@ -2,77 +2,90 @@
 <html>
     <head>
        <title>geo455_lab6</title>
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <script src="data.js"></script>
-        <script src="map_lab6.js"></script>
-        <style type="text/css">
+            <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+            <script src="data.js"></script>
+            <script src="geo455_lab6.js"></script>
+            <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+            <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+ <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: "whitesmoke";
+                font-family: "calibri", sans-serif;
+                color: #3d3d3d;
+            }
+            #title {
+                position: fixed;
+                margin-top: 0;
+                top: 15px;
+                left: 55px;
+                font-size: 2em;
+                font-family: "calibri", sans-serif;
+                letter-spacing: .04em;
+                padding: 10px 15px;
+                background-color: rgba(255, 255, 255, 0.5);
+                border: 2px solid darkgrey;
+                border-radius: 3px;
+                z-index: 800;
+            }
+            #map {
+                position: absolute;
+                bottom: 36px;
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                border-radius: 3px;
+            }
+            .legend {
+              padding: 6px 8px;
+              line-height: 18px;
+              background: rgba(255,255,255,0.9);
+              box-shadow: 0 0 15px rgba(0,0,0,0.2);
+              border-radius: 5px;
+            }
+           .legend i {
+              width: 18px;
+              height: 18px;
+              float: left;
+              margin-right: 8px;
+              opacity: 0.7;
+            }
+            #container #footer {
+                position:fixed;
+                bottom: 5px;
+                left: 5px;
+                right: 5px;
+                clear: both;
+                font-family: "calibri", sans-serif;
+                font-size: 1em;
+                letter-spacing: .04em;
+                height: 23px;
+                background-color: rgba(245, 245, 245,0.75);
+                border-radius: 3px;
+                text-align: center;
+                padding-top: 3px;
+                font-style: italic;
+            }
 body {
-            margin: 0;
-            padding: 0;
-            background-color: "whitesmoke";
-            font-family: "Noto Sans", sans-serif;
-            color: #3d3d3d;
-        }
-    #title {
-            position: fixed;
-            margin-top: 0;
-            top: 10px;
-            left: 50px;
-            font-size: 1.5em;
-            font-family: "Lora", serif;
-            letter-spacing: .04em;
-            padding: 10px 15px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border: 1px solid grey;
-            border-radius: 3px;
-            z-index: 800;
-        }
-    #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-    .legend {
-          padding: 6px 8px;
-          line-height: 18px;
-          background: rgba(255,255,255,0.9);
-          box-shadow: 0 0 15px rgba(0,0,0,0.2);
-          border-radius: 5px;
-        }
-    .legend i {
-          width: 18px;
-          height: 18px;
-          float: left;
-          margin-right: 8px;
-          opacity: 0.7;
-        }
-</style>
+	background-color: darkgrey;
+     }
+  </style>
 
     </head>
     <body>
         <div id="container">
-            <div id="header">Lab 6: Population Density of London (2011)</div>
-            <div id="leftMenu">
-                <p>In this assignment, we are working with layer controls. We have three layers, landmarks, basemap, and SRTM 30m hillshade map using WMS service. Landmarks are based on encyclopedia Britannica's entry on <a style="color: darkblue" href="https://www.britannica.com/list/new-seven-wonders-of-the-world">New Seven Wonders of the World</a> and the images are linked from Wikipedia Common images</p>
-                <p>Here is a list of the wonders:</p>
-                    <ol type="1">
-                        <li>Great Wall of China</li>
-                        <li>Chichen-Itza</li>
-                        <li>Petra</li>
-                        <li>Machu Pichu</li>
-                        <li>Christ the Redeemer</li>
-                        <li>Colosseum</li>
-                        <li>Taj Mahal</li>
-                    </ol>
-                <p style="margin-top: 0px"><a style="color: darkblue" href='../index.html'>Go back to main page</a></p>
-                </div>                
-            <div id="map"></div>
-                <script src="map_lab6.js"></script>
-            <div id="footer">Map developed by Madeline Meltesen</div>
-        </div>
+            <div id="title"><b>Lab 6: Population Density of London (2011)</b></div>
+                        
+            <div id="map"></div> 
+                <script src="geo455_lab6.js"></script>
+             <div id="footer">Map developed by Madeline Meltesen | <a style="color: darkblue" href='../index.html'>Go back to main page</a></div>
+                                
+            
+                </div>
      </body>
 </html>

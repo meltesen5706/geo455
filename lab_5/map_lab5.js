@@ -184,6 +184,7 @@ L.easyButton(('<img src="images/globe_icon.png", height=85%>'), function(btn, ma
     map.setView([6.794952075439587, 20.91148703911037], 3);
 }).addTo(mymap);
 
+
 // Make International Space Station (ISS) marker with a custom icon
   var issIcon = L.icon({
     iconUrl: 'images/iss200.png',

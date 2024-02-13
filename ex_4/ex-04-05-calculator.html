@@ -3,12 +3,18 @@
     <head>
         <title>Working with user input</title>
     </head>
-    <body>
+    <body style="background-color: beige">
+        <h3>Multiplication</h3>
         <p>First number: <input type="number" id="num1" min="0" max="100" value=""></p>
         <p>Second number: <input type="number" id="num2" min="0" max="100" value=""></p>
-        
         <input type="button" id="multiply" value="Multiply!">
         <p id="result"></p>
+        
+        <h3>Addition</h3>
+        <p>First number: <input type="number" id="num3" min="0" max="100" value=""></p>
+        <p>Second number: <input type="number" id="num4" min="0" max="100" value=""></p>
+        <input type="button" id="add" value="Add!">
+        <p id="result2"></p>
         
         <script>
             var num1 = document.getElementById("num1");
@@ -18,6 +24,17 @@
             document.getElementById("multiply").addEventListener("click", function() {
                 result.innerHTML = "The result is: " + num1.value * num2.value;
             });
+            
+            
+            var num3 = document.getElementById("num3");
+            var num4 = document.getElementById("num4");
+            var result2 = document.getElementById("result2");
+            
+            document.getElementById("add").addEventListener("click", function() {
+                result2.innerHTML = "The result is: " + (parseInt(num3.value) + parseInt(num4.value));
+            });
+                     
         </script>
+        
     </body>
 </html>

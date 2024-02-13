@@ -7,17 +7,29 @@
     
     <h3>What can JavaScript do?</h3>
     <button id="myBtn1">Click me!!</button>
-    <p id="demo1"></p>
+    <p id="demo1"></p><br>
     
+    <h3>What is my name?</h3>
+    <button id="myBtn4">Click me!!</button>
+    <p id="demo4"></p><br>
     
     
     <h3>What's the date today?</h3>
     <button id="myBtn2">Display current date/time</button>
-    <p id="demo2"></p>
+    <p id="demo2"></p><br>
+    
+    
+    <!-- CHANGE STYLE WITH MOUSEOVER -->
     
     <h3 onmouseover="style.color='red'" onmouseout="style.color='black'">
         Mouse over this text</h3>
 
+    <h3 onmouseover="style.color='green'" onmouseout="style.color='black'">
+        This text will turn green</h3>
+    
+    <h3 onmouseover="style.color='blue'" onmouseout="style.color='black'">
+        This text will turn blue</h3><br>
+    
     
     <h3>This example uses the addEventListener() 
         method to add many events on the same button.</h3>
@@ -28,6 +40,8 @@
 
 <script>
     
+    // CLICK BUTTON TO MAKE TEXT APPEAR
+    
     document.getElementById("myBtn1").addEventListener("click", hello);
     
     function hello() {
@@ -35,7 +49,15 @@
             "JavaScript can change page contents!";
             }
 
+     document.getElementById("myBtn4").addEventListener("click", name);
     
+    function name() {
+        document.getElementById("demo4").innerHTML = 
+            "Madeline";
+            }
+    
+    
+    // DISPLAY DATE
     
     document.getElementById("myBtn2").addEventListener("click", displayDate);
 
@@ -44,14 +66,16 @@
     }
     
     
+    // EVENT LISTENER, += MAKES TEXT LIST EVENTS
+    
     var x = document.getElementById("myBtn3");
     x.addEventListener("mouseover", myFunction);
     x.addEventListener("click", mySecondFunction);
     x.addEventListener("mouseout", myThirdFunction);
     
-    
+        
     function myFunction(){
-        document.getElementById("demo3").innerHTML += "Moused over!<br>";
+        document.getElementById("demo3").innerHTML = "Moused over!<br>";
     }
     
     function mySecondFunction() {
@@ -59,7 +83,7 @@
     }
     
     function myThirdFunction() {
-        document.getElementById("demo3").innerHTML += "Moused out!<br>";
+        document.getElementById("demo3").innerHTML = "Moused out!<br>";
     }
     
     
