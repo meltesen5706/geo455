@@ -1,10 +1,108 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <title>geo455_lab7</title>
+        <title>geo455_lab7</title>
+        <script src="js/lab_7.js"></script>
+        <!-- fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
+        <!-- leaflet -->
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <!-- searchbox -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.css" integrity="sha512-1TnOnmQ91QV8X1/dj6UMPhRM35nAnBanyvXPFU7uqV3xg+++cGxIBR6Bh5D7F8wVrwNm8eAfBWNYX/4yce4CiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.js" integrity="sha512-erNK0f3PSiL/SdS247MoOAK95iJCmfueXT4WG5eyRBR1eOgcE0bI5y2fSEVTQfAS53pTqL/VIQpJXnG99U1n+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+        <!-- locator map -->
+        <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.css' rel='stylesheet' />
+        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
+        <!-- button -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+        <!-- cluster marker -->
+        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+        <!-- javascript files -->
+        <script src="js/lab_7.js"></script>
+        <script src="js/leaflet-heat.js"></script>
+        <script src="js/mtn_peaks.js"></script>  
+        
+    <style type="text/css">
+            
+#container {
+	height: relative;
+	width: relative;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+#container #map {
+	background-color:rgb(117, 207, 240);
+	height: 900px;
+    border: solid white 2px;
+    border-radius: 3px;
+    margin-bottom: 33px;
+    }
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #000000;
+    color: #ffffff;
+    }
+#container #header {
+    font-size: 2em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 4px 15px;
+    background-color:rgba(221, 228, 186,1);
+    border: 2px solid white;
+    text-align: center;
+    }
+            
+#title {
+    position: fixed;
+    margin-top: 0;
+    top: 20px;
+    left: 70px;
+    font-size: 2em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid grey;
+    border-radius: 3px;
+    z-index: 800;
+}
+                  
+#container #footer {
+        position:fixed;
+        bottom: 0px;
+        left: 5px;
+        right: 5px;
+        clear: both;
+        font-family: "calibri", sans-serif;
+        font-size: 1em;
+        letter-spacing: .04em;
+        height: 23px;
+        background-color: rgba(245, 245, 245,1);
+        border-radius: 3px;
+        text-align: center;
+        padding-top: 3px;
+        margin: 3px;
+        font-style: italic;
+}
+body {
+	background-color:#1489b4;
+}
+</style>
+
     </head>
-         <body bgcolor="#EDDD9E">
-       <h1 align="center">Lab 7</h1>
-       
+    <body>
+        <div id="container">
+            <div id="title"><b>Lab 7: Mapping Expeditions and Fatalities in the Himalayas (1950-2003)</b></div>
+            <div id="description">
+             <div id="footer">Map developed by Madeline Meltesen | <a style="color: darkblue" href='../index.html'>Go back to main page</a></div>           
+            </div>                
+            <div id="map"></div>
+                <script src= "js/lab_7.js"></script>
+                </div>
      </body>
 </html>
