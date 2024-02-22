@@ -1,91 +1,148 @@
 <!DOCTYPE html>
 <html>
-    <head>
-       <title>geo455_lab6</title>
-            <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-            <script src="data.js"></script>
-            <script src="geo455_lab6.js"></script>
-            <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
-            <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
- <style>
-            body {
-                margin: 0;
-                padding: 0;
-                background-color: "whitesmoke";
-                font-family: "calibri", sans-serif;
-                color: #3d3d3d;
-            }
-            #title {
-                position: fixed;
-                margin-top: 0;
-                top: 15px;
-                left: 55px;
-                font-size: 2em;
-                font-family: "calibri", sans-serif;
-                letter-spacing: .04em;
-                padding: 10px 15px;
-                background-color: rgba(255, 255, 255, 0.5);
-                border: 2px solid darkgrey;
-                border-radius: 3px;
-                z-index: 800;
-            }
-            #map {
-                position: absolute;
-                bottom: 36px;
-                top: 5px;
-                left: 5px;
-                right: 5px;
-                border-radius: 3px;
-            }
-            .legend {
-              padding: 6px 8px;
-              line-height: 18px;
-              background: rgba(255,255,255,0.9);
-              box-shadow: 0 0 15px rgba(0,0,0,0.2);
-              border-radius: 5px;
-            }
-           .legend i {
-              width: 18px;
-              height: 18px;
-              float: left;
-              margin-right: 8px;
-              opacity: 0.7;
-            }
-            #container #footer {
-                position:fixed;
-                bottom: 5px;
-                left: 5px;
-                right: 5px;
-                clear: both;
-                font-family: "calibri", sans-serif;
-                font-size: 1em;
-                letter-spacing: .04em;
-                height: 23px;
-                background-color: rgba(245, 245, 245,0.75);
-                border-radius: 3px;
-                text-align: center;
-                padding-top: 3px;
-                font-style: italic;
-            }
-body {
-	background-color: darkgrey;
-     }
-  </style>
-
-    </head>
-    <body>
-        <div id="container">
-            <div id="title"><b>Lab 6: Population Density of London (2011)</b></div>
+<head>
+    <title>geo455_lab6</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <script src="data.js"></script>
+    <script src="geo455_lab6.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: "whitesmoke";
+            font-family: "calibri", sans-serif;
+            color: #3d3d3d;
+        }
+        #title {
+            position: fixed;
+            margin-top: 0;
+            top: 13px;
+            left: 55px;
+            font-size: 2em;
+            font-family: "calibri", sans-serif;
+            letter-spacing: .04em;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px solid darkgrey;
+            border-radius: 5px;
+            z-index: 800;
+        }
+        #map1 {
+            position:fixed;
+            height: 95%;
+            bottom: 36px;
+            left: 5px;
+            right: 5px;
+            border-radius: 3px;
+        }
+        #map2 {
+            position:fixed;
+            height: 95%;
+            bottom: 36px;
+            left: 5px;
+            right: 5px;
+            border-radius: 3px;
+            display: none;
+        }
+        .legend {
+            padding: 6px 8px;
+            line-height: 18px;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        #switchBtn {
+            position: fixed;
+            font-family: "calibri", sans-serif;
+            font-size: 120%;
+            left: 16px;
+            top: 120px;
+            color: black;
+            height: 35px;
+            border-radius: 5px;
+            border: 2px solid darkgrey;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        #container #footer {
+            position:fixed;
+            bottom: 5px;
+            left: 5px;
+            right: 5px;
+            clear: both;
+            font-family: "calibri", sans-serif;
+            font-size: 1em;
+            letter-spacing: .04em;
+            height: 23px;
+            background-color: rgba(245, 245, 245,0.75);
+            border-radius: 3px;
+            text-align: center;
+            padding-top: 3px;
+            font-style: italic;
+        }
+        body {
+            background-color: darkgrey;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="title"><b>Lab 6: Population Density of London (2011)</b></div>
                         
-            <div id="map"></div> 
-                <script src="geo455_lab6.js"></script>
-             <div id="footer">Map developed by Madeline Meltesen | <a style="color: darkblue" href='../index.html'>Go back to main page</a></div>
-                                
+        <div id="map1"></div>
+        <div id="map2"></div>
+        
+        <script src="geo455_lab6.js"></script>
+        
+        <button id="switchBtn">Switch Map</button>
+        
+        <script>
+        // BUTTON
+            var currentMap = map1; // initialize the currentMap variable
             
-                </div>
-     </body>
+            
+            document.getElementById('switchBtn').addEventListener('click', function() {
+                var map1Div = document.getElementById('map1');
+                var map2Div = document.getElementById('map2');
+                
+
+                // Check the current display style of map1Div and toggle accordingly
+                if (map1Div.style.display === 'none') {
+                    map1Div.style.display = 'block';
+                    map2Div.style.display = 'none';
+                    currentMap = map2;
+                    
+                    document.getElementById("title").textContent="Lab 6: Population Density of London (2011)";
+                    
+                    map1.invalidateSize();
+                } else {
+                    map1Div.style.display = 'none';
+                    map2Div.style.display = 'block';
+                    currentMap = map1;
+                    
+                   document.getElementById("title").textContent="Density of English Speaking Households in London (2011)";
+                    document.getElementById("title").style.fontWeight = "bold";
+                    
+                    map2.invalidateSize();
+                }
+                
+            });
+        </script>
+        
+        <div id="footer">Map developed by Madeline Meltesen | <a style="color: darkblue" href='../index.html'>Go back to main page</a></div>
+    </div>
+</body>
 </html>

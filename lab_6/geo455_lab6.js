@@ -1,99 +1,187 @@
-//Create the map variable
-var mymap = L.map("map", {
-    center: [51.48882027639122, -0.1028811094342392], 
+// Create map variable 1
+var map1 = L.map("map1", {
+    center: [51.48882027639122, -0.1028811094342392],
     zoom: 11,
-    });
+});
 
-// Set up baselayers
+// Create map variable 2
+var map2 = L.map("map2", {
+    center: [51.48882027639122, -0.1028811094342392],
+    zoom: 11,
+});
+
+// Baselayer 1
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2NoYXVkaHVyaSIsImEiOiJjazBtcG5odG8wMDltM2JtcjdnYTgyanBnIn0.qwqjMomdrBMG36GQKXBlMw', {
     maxZoom: 11,
     minZoom: 5,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox/light-v9',
     tileSize: 512,
     zoomOffset: -1
-}).addTo(mymap);
+}).addTo(map1);
 
-// Color codes for choropleth map
-function getColor(value) {
-    return value > 139 ? '#08519c':
-           value > 87  ? '#3182bd':
-           value > 53  ? '#6baed6':
-           value > 32  ? '#bdd7e7':
-                         '#eff3ff';
+// Baselayer 2
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2NoYXVkaHVyaSIsImEiOiJjazBtcG5odG8wMDltM2JtcjdnYTgyanBnIn0.qwqjMomdrBMG36GQKXBlMw', {
+    maxZoom: 11,
+    minZoom: 5,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/light-v9',
+    tileSize: 512,
+    zoomOffset: -1
+}).addTo(map2);
+
+var currentMap = map1;
+
+// Color codes 1
+function getColor1(value) {
+    return value > 139 ? '#08519c' :
+        value > 87 ? '#3182bd' :
+        value > 53 ? '#6baed6' :
+        value > 32 ? '#bdd7e7' :
+        '#eff3ff';
 }
-function style(feature){
+
+function style1(feature) {
     return {
-        fillColor: getColor(feature.properties.pop_den),   
+        fillColor: getColor1(feature.properties.pop_den),
         weight: 2,
         opacity: 1,
         color: 'gray',
         fillOpacity: 0.9
     };
 }
-    
-geojson = L.geoJson(data, {
-    style:style,
-    onEachFeature: onEachFeature
-}).bindPopup(function (layer){
-    return layer.feature.properties.NAME 
-           + '<p style="color:darkblue">' + 
+
+var geojson1 = L.geoJson(data, {
+    style: style1,
+    onEachFeature: onEachFeature1
+}).bindPopup(function (layer) {
+    return layer.feature.properties.NAME +
+        '<p style="color:darkblue">' +
         layer.feature.properties.pop_den.toString() + ' people/hectare </p>';
-}).addTo(mymap);
+}).addTo(map1);
 
-// Mouseover effects
-function highlightFeature(e) {
-    // Get access to the feature that was hovered through e.target
-    var feature = e.target;
+// Color codes 2
+function getColor2(value) {
+    return value > 32 ? '#005a32' :
+        value > 21 ? '#238b45' :
+        value > 13 ? '#74c476' :
+        value > 8 ? '#a1d99b' :
+        '#e5f5e0';
+}
 
-    // Set a thick grey border on the feature as mouseover effect
-    // Adjust the values below to change the highlighting styles of features on mouseover
-    // Check out https://leafletjs.com/reference-1.3.4.html#path for more options for changing style
-    feature.setStyle({
+function style2(feature) {
+    return {
+        fillColor: getColor2(feature.properties.dens_all),
+        weight: 2,
+        opacity: 1,
+        color: 'gray',
+        fillOpacity: 0.9
+    };
+}
+
+var geojson2 = L.geoJson(data, {
+    style: style2,
+    onEachFeature: onEachFeature2
+}).bindPopup(function (layer) {
+    return layer.feature.properties.NAME +
+        '<p style="color:darkgreen">' +
+        layer.feature.properties.dens_all.toString() + ' English speaking households/hectare </p>';
+}).addTo(map2);
+
+// Mouseover effects 1
+function highlightFeature1(e) {
+    var layer = e.target;
+
+    layer.setStyle({
         weight: 5,
         color: '#666',
         fillOpacity: 0.7
     });
 
-    // Bring the highlighted feature to front so that the border doesn’t clash with nearby states
-    // But not for IE, Opera or Edge, since they have problems doing bringToFront on mouseover
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        feature.bringToFront();
+        layer.bringToFront();
     }
 }
 
-var geojson; // define a variable to make the geojson layer accessible for the function to use   
-            
-function resetHighlight(e) {
-    geojson.resetStyle(e.target);
+function resetHighlight1(e) {
+    geojson1.resetStyle(e.target);
 }
 
-function onEachFeature(feature, layer) {
+function onEachFeature1(feature, layer) {
     layer.on({
-        mouseover: highlightFeature, // Do what defined by the highlightFeature function on mouseover
-        mouseout: resetHighlight,    // Do what defined by the resetHighlight function on mouseout
+        mouseover: highlightFeature1,
+        mouseout: resetHighlight1,
     });
 }
-    
-// Legend design
-var legend = L.control({position: 'bottomright'}); // Try the other three corners if you like.
 
-legend.onAdd = function (map) {
+// Mouseover effects 2
+function highlightFeature2(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+}
+
+function resetHighlight2(e) {
+    geojson2.resetStyle(e.target);
+}
+
+function onEachFeature2(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature2,
+        mouseout: resetHighlight2,
+    });
+}
+
+// Legend 1
+var legend1 = L.control({
+    position: 'bottomright'
+});
+
+legend1.onAdd = function (map1) {
 
     var div = L.DomUtil.create('div', 'legend'),
-        grades = [0, 32, 53, 87, 139]; // The break values to define the intervals of population, note we begin from 0 here
+        grades = [0, 32, 53, 87, 139];
 
-    div.innerHTML = '<b>Density per square unit area</b><br>'; // The legend title (HTML-based)
+    div.innerHTML = '<b>Population Density</b><br>';
 
-    // Loop through our the classes and generate a label with a color box for each interval.
-    // If you are creating a choropleth map, you DO NOT need to change lines below.
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
-        '<i style="background:' + getColor(grades[i] + 1) + '"></i>' +
-        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            '<i style="background:' + getColor1(grades[i] + 1) + '"></i>' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
 
     return div;
 };
 
-legend.addTo(mymap);
+legend1.addTo(map1);
+
+// Legend 2
+var legend2 = L.control({
+    position: 'bottomright'
+});
+
+legend2.onAdd = function (map2) {
+
+    var div = L.DomUtil.create('div', 'legend'),
+        grades = [0, 8, 13, 21, 32];
+
+    div.innerHTML = '<b>Number of English Speaking <br> Households per Hectare</b><br>';
+
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor2(grades[i] + 1) + '"></i>' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend2.addTo(map2);
