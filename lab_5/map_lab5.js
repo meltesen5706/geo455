@@ -113,7 +113,7 @@ loc.addTo(mymap);
 
 
 // Add Line
-var line = L.polyline(coords, {color: "red", weight: 5}).bindPopup("Travel Path");
+var line = L.polyline(coords, {color: "darkred", weight: 5}).bindPopup("Travel Path");
 line.addTo(mymap);
 
 // Add a scalebar 
