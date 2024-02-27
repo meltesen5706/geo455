@@ -198,6 +198,13 @@ L.easyButton(('<img src="images/globe_icon.png", height=85%>'), function(btn, ma
 
   var firstTime = true;
 
+// Zoom to ISS 
+document.getElementById('zoomToISS').addEventListener('click', function() {
+    // Set the map view to the ISS location
+    mymap.setView(marker.getLatLng(), 5); // You can adjust the zoom level as needed
+});
+
+
 // Update the Lat/long based on the updated reading everytime
   async function getISS() {
     var response = await fetch(api_url);
