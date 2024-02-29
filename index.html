@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>ESC/GEO 455 (SP22) DEMO</title>
+        <title>GEO 455 (SP22)</title>
         <meta name="description" content="An interactive getting started guide">
         <link rel="stylesheet" href="main.css">
         
@@ -96,6 +96,18 @@
             margin: auto;
             margin-top: 15px;
         }
+        .lightbox figcaption {
+            color: white;
+            position: absolute;
+            font-family: "Calibri", sans-serif;
+            font-size: 110%;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
                 
     </style>
     </head>
@@ -156,6 +168,7 @@
                     <!-- Add larger version of the image inside a hidden container -->
                     <div class="lightbox">
                         <img src="images/profile_pic_large.jpg">
+                        <figcaption>Excavating down in a unit</figcaption>
                     </div>
                 </div>
                 <!-- Repeat the same structure for other images -->
@@ -163,12 +176,14 @@
                     <img src="images/field_pic.jpg" height="300">
                     <div class="lightbox">
                         <img src="images/field_pic_large.jpg">
+                        <figcaption>Excavating with a pickaxe</figcaption>
                     </div>
                 </div>
                 <div class="image-container">
                     <img src="images/STP.jpg" height="300">
                     <div class="lightbox">
                         <img src="images/STP_large.jpg">
+                        <figcaption>View from a shovel test pit (STP)</figcaption>
                     </div>
                 </div>
             </div>
