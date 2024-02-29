@@ -23,7 +23,7 @@
         #title {
             position: fixed;
             margin-top: 0;
-            top: 13px;
+            top: 15px;
             left: 55px;
             font-size: 2em;
             font-family: "calibri", sans-serif;
@@ -36,22 +36,24 @@
         }
         #map1 {
             position:fixed;
-            height: 95%;
-            bottom: 36px;
+            height: 96%;
+            top: 4px;
             left: 5px;
             right: 5px;
             border-radius: 3px;
         }
         #map2 {
             position:fixed;
-            height: 95%;
-            bottom: 36px;
+            height: 96%;
+            top: 4px;
             left: 5px;
             right: 5px;
             border-radius: 3px;
             display: none;
         }
         .legend {
+            font-family: "calibri", sans-serif;
+            font-size: 125%;
             padding: 6px 8px;
             line-height: 18px;
             background: rgba(255,255,255,0.9);
@@ -59,6 +61,8 @@
             border-radius: 5px;
         }
         .legend i {
+            font-family: "calibri", sans-serif;
+            font-size: 125%;
             width: 18px;
             height: 18px;
             float: left;
@@ -94,7 +98,7 @@
             font-style: italic;
         }
         body {
-            background-color: darkgrey;
+            background-color: lightgray;
         }
     </style>
 </head>
@@ -111,7 +115,7 @@
         
         <script>
         // BUTTON
-            var currentMap = map1; // initialize the currentMap variable
+            var currentMap = map1; // make the currentMap variable
             
             
             document.getElementById('switchBtn').addEventListener('click', function() {
@@ -133,7 +137,7 @@
                     map2Div.style.display = 'block';
                     currentMap = map1;
                     
-                   document.getElementById("title").textContent="Density of English Speaking Households in London (2011)";
+                   document.getElementById("title").textContent="Lab 6: Density of English Speaking Households in London (2011)";
                     document.getElementById("title").style.fontWeight = "bold";
                     
                     map2.invalidateSize();
