@@ -125,6 +125,9 @@ mymap.addControl(searchControl);
 
 
 // Legend
+var baseMaps = {
+    "Streets": streets
+};
 
 var overlayMaps = {
     "<img src='js/peaks.png' height=16> Location of Himalayan Peaks": peaks,
@@ -133,13 +136,19 @@ var overlayMaps = {
     "<img src='js/cluster_icon.png' height=16> Clustering of Peaks": clustermarkers,
 };
 
-var legend = L.control.layers(overlayMaps, {}, {collapsed: false}).addTo(mymap);
+// Set only the "Location of Himalayan Peaks" to be checked by default
+peaks.addTo(mymap);
+mymap.removeLayer(propcircles);
+mymap.removeLayer(heat);
+mymap.removeLayer(clustermarkers);
+
+var legend = L.control.layers(overlayMaps, {}, { collapsed: false }).addTo(mymap);
+
 
 // Zoom button
 L.easyButton(('<img src="js/globe_icon.png", height=85%>'), function(btn, map){
     map.setView([28.972443641658437, 84.59443216376953], 8);
 }).addTo(mymap);
-
 
 
 // Add a scalebar 
