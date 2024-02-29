@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>geo455_final</title>
+        
+        <!-- jQuery from CDN -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+       <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+       <!-- Leaflet from CDN -->
+       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+       <!-- Googple Fonts API -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100&display=swap" rel="stylesheet">
+       <!-- Esri Leaflet from CDN -->
+       <script src="https://unpkg.com/esri-leaflet@3.0.7/dist/esri-leaflet.js"
+        integrity="sha512-ciMHuVIB6ijbjTyEdmy1lfLtBwt0tEHZGhKVXDzW7v7hXOe+Fo3UA1zfydjCLZ0/vLacHkwSARXB5DmtNaoL/g=="
+        crossorigin=""></script>
+        <!-- Esri Leaflet Vector from CDN -->
+        <script src="https://unpkg.com/esri-leaflet-vector@3.1.2/dist/esri-leaflet-vector.js"
+            integrity="sha512-SnA/TobYvMdLwGPv48bsO+9ROk7kqKu/tI9TelKQsDe+KZL0TUUWml56TZIMGcpHcVctpaU6Mz4bvboUQDuU3w=="
+            crossorigin=""></script>
+       <!-- my script -->
+       <script src="map_lab8.js"></script>
+        
+        <style type="text/css">
+#container {
+	height: relative;
+	width: relative;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+#container #map {
+	background-color:lightgray;
+	height: 850px;
+    border: solid white 2px;
+    }
+#container #header {
+    font-size: 2em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 6px 15px;
+    background-color:rgba(245, 245, 245,0.75);
+    border: 2px solid white;
+    text-align: center;
+    }
+#container #leftMenu {
+	position: static;
+    background-color: whitesmoke;
+	width: 200px;
+    top: 100px;
+    left: 50px;
+	float: left;
+	height: 830px;
+	margin: 0px;
+    font-size: 1.1em;
+    font-family: "calibri", sans-serif;
+    letter-spacing: .04em;
+    padding: 10px 15px;
+    border: 2px solid white;
+    z-index: 800;
+}
+#container #footer {
+    clear: both;
+	font-family: "calibri", sans-serif;
+	font-size: 1em;
+    letter-spacing: .04em;
+	height: 25px;
+	background-color: rgba(245, 245, 245,0.75);
+    border: 2px solid white;
+	text-align: center;
+	padding-top: 6px;
+	font-style: italic;
+}
+            
+body {
+	background-color:#1489b4;
+}
+</style>
+
+    </head>
+    <body>
+        <div id="container">
+            <div id="header">Final Project</div>
+            <div id="leftMenu">
+                
+
+            </div>
+        
+        <div id="map"></div>
+            <script src="finalproject.js"></script>
+            
+        <div id="footer">Map developed by Madeline Meltesen | <a style="color: darkblue" href='../index.html'>Go back to main page</a></div>
+        </div>
+     </body>
+</html>
