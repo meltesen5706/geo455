@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading GeoJSON from object</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+let map = L.map("map").setView([43, -105], 4);  // MAP VARIABLE
+
+L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attribution/">CartoDB</a>',
+    subdomains: "abcd",
+    maxZoom: 19
+}).addTo(map);
+
+let states = {                                  // NEW VARIABLE
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"Name": "North Dakota"},
+      "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+              [[-104.05, 48.99], [-97.22,  48.98], 
+              [-96.58,  45.94], [-104.03, 45.94], 
+              [-104.05, 48.99]]
+          ]
+      }
+    }, 
+    {
+      "type": "Feature",
+      "properties": {"Name": "Colorado"},
+      "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+              [[-109.05, 41.00], [-102.06, 40.99], 
+              [-102.03, 36.99], [-109.04, 36.99], 
+              [-109.05, 41.00]]
+          ] 
+      }
+    },
+        {
+      "type": "Feature",
+      "properties": {"Name": "Nevada"},
+      "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+              [[-120.00088402770768,
+              42.0051409551418],[-119.96907820724087,
+              39.00024715500106],[-117.03233910621631,
+              36.85897260211709],[-114.62863500292964,
+              35.015329326397065],[-114.58645812240405,
+              35.233382895742494],[-114.68580441913676,
+              35.50005836396619],[-114.72458139682655,
+              35.92493574698162],[-114.73323885917455,
+              36.084981462787425],[-114.60396412744757,
+              36.14850386050978],[-114.32498723580002,
+              36.11483275496248],[-114.22277494428536,
+              35.99969506507384],[-114.10941893448523,
+              36.03076871483104],[-114.03907956508672,
+              36.224619047211775],[-114.03995508199448,
+              37.778886451655524],[-114.03242856043958,
+              42.00567767351865],[-117.2529851918272,
+              41.98889011221149],[-120.00088402770768,
+              42.0051409551418]]
+          ] 
+      }
+    }
+  ]
+};
+
+L.geoJSON(states).addTo(map);       // DEFINE GEOJSON AND ADD IT TO MAP
+
+    </script>
+</body>
+</html>
+
