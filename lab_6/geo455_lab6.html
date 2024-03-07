@@ -74,12 +74,28 @@
             font-family: "calibri", sans-serif;
             font-size: 120%;
             left: 16px;
-            top: 120px;
+            top: 160px;
             color: black;
             height: 35px;
             border-radius: 5px;
             border: 2px solid darkgrey;
             background-color: rgba(255, 255, 255, 0.7);
+        }
+        #mapSwitch {
+            position:relative;
+            padding-top: 2px;
+            padding-right: 2px;
+            font-family: "calibri", sans-serif;
+            font-size: 120%;
+            left: 150px;
+            top: 160px;
+            color: black;
+            height: 50px;
+            width: 220px;
+            border-radius: 5px;
+            border: 2px solid darkgrey;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: 1000;
         }
         #container #footer {
             position:fixed;
@@ -97,6 +113,21 @@
             padding-top: 3px;
             font-style: italic;
         }
+        #p {
+            position: fixed;
+            margin-top: 0;
+            color: black;
+            top: 120px;
+            left: 16px;
+            font-size: 100%;
+            font-family: "calibri", sans-serif;
+            letter-spacing: .04em;
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 2px solid darkgrey;
+            border-radius: 5px;
+            padding: 5px;
+            z-index: 1200;        
+        }
         body {
             background-color: lightgray;
         }
@@ -105,7 +136,16 @@
 <body>
     <div id="container">
         <div id="title"><b>Lab 6: Population Density of London (2011)</b></div>
-                        
+        <div id="p">Click the "Switch Map" Button before toggling the radio buttons</div>
+        
+    <div id="mapSwitch">
+        <input type="radio" id="map1Radio" name="mapSelection" value="map1" checked>
+        <label for="map1Radio">Population Density Map</label>
+        <input type="radio" id="map2Radio" name="mapSelection" value="map2">
+        <label for="map2Radio">English Speaking Density Map</label>
+    </div>
+        
+        
         <div id="map1"></div>
         <div id="map2"></div>
         
@@ -114,6 +154,7 @@
         <button id="switchBtn">Switch Map</button>
 
         <script>
+            
         // BUTTON
             var currentMap = map1; // make the currentMap variable
             
@@ -142,7 +183,34 @@
                     map2.invalidateSize();
                 }
             });
-        </script>
+            
+       </script>
+        
+    <script>
+        // Function to switch between maps
+        function switchMap() {
+            var selectedMap = document.querySelector('input[name="mapSelection"]:checked').value;
+
+            // Hide both maps
+            document.getElementById('map1').style.display = 'none';
+            document.getElementById('map2').style.display = 'none';
+
+            // Show the selected map
+            document.getElementById(selectedMap).style.display = 'block';
+            
+            // Update the title based on the selected map
+            if (selectedMap === 'map1') {
+                document.getElementById("title").textContent = "Lab 6: Population Density of London (2011)";
+            } else if (selectedMap === 'map2') {
+                document.getElementById("title").textContent = "Lab 6: Density of English Speaking Households in London (2011)";
+            }
+        }
+
+        // Add event listener for radio button change
+        document.querySelectorAll('input[name="mapSelection"]').forEach(function(radio) {
+            radio.addEventListener('change', switchMap);
+        });
+    </script>
         
         <div id="footer">Map developed by Madeline Meltesen | <a style="color: darkblue" href='../index.html'>Go back to main page</a></div>
     </div>
