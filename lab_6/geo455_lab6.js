@@ -173,7 +173,7 @@ legend2.onAdd = function (map2) {
     var div = L.DomUtil.create('div', 'legend'),
         grades = [0, 8, 13, 21, 32];
 
-    div.innerHTML = '<b>Number of English Speaking <br> Households per Hectare</b><br>';
+    div.innerHTML = '<b>English Speaking <br> Households per Hectare</b><br>';
 
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
@@ -185,3 +185,25 @@ legend2.onAdd = function (map2) {
 };
 
 legend2.addTo(map2);
+
+
+// Create basemap layer group for each map
+var basemaps1 = {
+    'Population Density': map1,
+};
+var basemaps2 = {
+    'English Speaking Households per Hectare': map2,
+};
+
+// Create overlay layer group containing both maps
+var overlayMaps = {
+    'Map 1': basemaps1,
+    'Map 2': basemaps2,
+};
+
+// Create the menu window with checkboxes
+var layerControl = L.control.layers(null, overlayMaps, { collapsed: false });
+
+// Add the layer control to both maps
+layerControl.addTo(map1);
+layerControl.addTo(map2);
