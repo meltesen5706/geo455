@@ -15,8 +15,9 @@
     <script src="https://lycheelin.github.io/leaflet.migrationLayer/src/src.js"></script>
     <script src="https://github.com/leaflet-extras/leaflet-providers/blob/master/leaflet-providers.js"></script>
     <!-- my script -->
-    <script src="lab9.js"></script>
-    <script src="lab9_data/dane_commute_data.js"></script> 
+    <script src="map_lab9.js"></script>
+    <script src="lab9_data/dane_data.js"></script>
+    <script src="loc.js"></script>
    
         <style type="text/css">
 #container {
@@ -44,16 +45,17 @@
 #container #leftMenu {
 	position: static;
     background-color: whitesmoke;
-	width: 90px;
+	width: 16%;
     top: 100px;
     left: 50px;
 	float: left;
-	height: 840px;
+	height: 850px;
 	margin: 0px;
     font-size: 1.1em;
     font-family: "calibri", sans-serif;
     letter-spacing: .04em;
-    padding: 5px 5px;
+    padding-left: 15px;
+    padding-right: 15px;
     border: 2px solid white;
     z-index: 800;
 }
@@ -80,8 +82,6 @@
     font-size: 18px;
     border-radius: 5px;
     display: block;
-    width: 200px;
-    height: 50px;
 }
 input[type="button"] {
     background-color: #1489b4;
@@ -94,16 +94,15 @@ input[type="button"] {
     font-size: 18px;
     border-radius: 5px;
     display: block;
-    width: 82px;
+    width: 98%;
     height: 45px;
-    margin: 5px;
+    margin: 2px;
     cursor: pointer; /* Change cursor to pointer on hover */
 }
 input[type="button"]:hover {
     background-color: #106d90; /* Darker blue on hover */
 }
-
-            
+      
 body {
 	background-color:#1489b4;
 }
@@ -116,6 +115,8 @@ body {
             
         <div id="leftMenu">
             <div id='event'>
+                <p> This map shows the people who make a daily commute into Dane County from surrounding counties in Wisconsin and Illinois. The data comes from the 2011-2015 5-Year American Community Survey Commuting Flows dataset found <a style="color: darkblue" href='https://www.census.gov/data/tables/2015/demo/metro-micro/commuting-flows-2015.html'>here</a>.<br><br>
+                    Use the following buttons to control the flow arrows:</p>
                 <input type="button" value="hide" class="btn" onclick="hide()">
                 <input type="button" value="show" class="btn" onclick="show()">
                 <input type="button" value="pause" class="btn" onclick="pause()">
@@ -125,7 +126,7 @@ body {
         </div>                
             
             <div id="map"></div>
-                <script src="lab9.js"></script>
+                <script src="map_lab9.js"></script>
             
             <div id="footer">Map developed by Madeline Meltesen | <a style="color: darkblue" href='../index.html'>Go back to main page</a></div>
             
