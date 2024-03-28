@@ -14,11 +14,11 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 $(document).ready(function() {
     $("#btn1").click(function(){
-        $("#splasher1").show();
+        $("#splasher1").toggle();
     });
-    $("#btn2").click(function(){
+ /*   $("#btn2").click(function(){
         $("#splasher1").hide();
-    });
+    }); */
     $("#btn3").click(function(){
         $("#splasher2").fadeIn();
     });
@@ -63,7 +63,7 @@ cities.bindPopup(function (layer) {
 // Wildfire risk
 
 var wildfireRisk = L.esri.dynamicMapLayer({
-    url: 'https://maps7.arcgisonline.com/arcgis/rest/services/USDA_USFS_2014_Wildfire_Hazard_Potential/MapServer',
+    url: 'https://apps.fs.usda.gov/fsgisx01/rest/services/RDW_Wildfire/RMRS_WRC_WildfireHazardPotential/ImageServer',
     // server response content type can be either 'json' (default) or 'image'
     f: 'image'
   }).addTo(mymap);
