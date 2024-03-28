@@ -62,7 +62,7 @@ cities.bindPopup(function (layer) {
 
 // Wildfire risk
 
-var wildfireRisk = L.esri.dynamicMapLayer({
+var wildfireRisk = L.esri.imageMapLayer({
     url: 'https://apps.fs.usda.gov/fsgisx01/rest/services/RDW_Wildfire/RMRS_WRC_WildfireHazardPotential/ImageServer',
     // server response content type can be either 'json' (default) or 'image'
     f: 'image'
