@@ -41,7 +41,7 @@ var icon = L.icon({
 // Cities variable
 
 var cities = L.esri.featureLayer({
-    url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Major_Cities_/FeatureServer/0',
+    url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Major_Cities/FeatureServer/0',
     pointToLayer: function (geojson, latlng) {
             return L.marker(latlng, {
               icon: icon
@@ -49,18 +49,12 @@ var cities = L.esri.featureLayer({
           }
         }).addTo(mymap);
 
-
-// City name popup
-
 cities.bindPopup(function (layer) {
         return L.Util.template(
           "<p><strong>{NAME}</strong>, {ST}</p>",
           layer.feature.properties
         );
       });
-
-
-// Wildfire risk
 
 var wildfireRisk = L.esri.imageMapLayer({
     url: 'https://apps.fs.usda.gov/fsgisx01/rest/services/RDW_Wildfire/RMRS_WRC_WildfireHazardPotential/ImageServer',
@@ -77,14 +71,13 @@ wildfireRisk.bindPopup(function (error, featureCollection) {
   });
 
 
-// Overlays
 
 var overlays = {
-    'Wildfire':wildfireRisk,
+    'Widlfire':wildfireRisk,
     "<img src='img/icon.png' height=20> Major Cities": cities};
 
 
-// Menu
-
+//Creating the menu
 var layerControl = L.control.layers({}, overlays, {collapsed: false}).addTo(mymap); //collapsed: true is defaults
 
+    
