@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Draggable marker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     
+    <!-- Load Leaflet from CDN -->
+       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+       
+    <!-- Load TurfJS from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+    
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+        // Bounds   long/lat
+        var bounds = [-94, 46, -88, 39];
+
+        // Initialize map
+        var mymap = L.map("map").fitBounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]]);
+
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
+            {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}
+        ).addTo(mymap);
+
+        // Define layers to store the dyanmic points that you will create by dragging, and tin surface that will be re-created everytime you change a point
+        var pnt_layer = L.layerGroup().addTo(mymap); // POINT LAYER VARIABLE
+        var tin_layer = L.layerGroup().addTo(mymap); // TIN LAYER VARIABLE
+
+        // Calculate random points as a starting point
+        var points = turf.randomPoint(5, {bbox: bounds});
+
+        L.geoJSON(points, {     //CONVERT TO GEOJSON POINTS
+            onEachFeature: function(feature, layer) { 
+                layer.addEventListener("drag", drawTIN); // with each point feature an element is added which when triggered will run the function drawTIN 
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {draggable: true})
+                .bindPopup("<b>Move me!</b>")
+                .addTo(mymap)
+                .openPopup(); // make sure marker popup is showing first;  // each point will be shpwn as a marker and will be draggable 
+            }
+        }).addTo(pnt_layer); // all these points will be added to the pnt_layer
+
+        // Function to draw TIN
+        function drawTIN() {
+            tin_layer.clearLayers(); // this is added so that everytime a new tin layer is created the last one is removed.
+            points = pnt_layer.toGeoJSON(); // geojson file is created from the points, NOT RELATED TO THE VAR POINTS ABOVE
+            tin = turf.tin(points); //a tin is created from the geojson files
+            tin = L.geoJSON(tin); //a geojson file from the tin is created
+            tin.addTo(tin_layer); //now its added to the tin layer
+        }
+        drawTIN(); //calling the function drawTIN
+
+    </script>
+</body>
+</html>
