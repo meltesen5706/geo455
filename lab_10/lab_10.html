@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>geo455_lab10</title>
+
+    <meta charset="utf-8" />
+      
+  <!--- fonts package--->
+        <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
+<!-- Load Leaflet from CDN -->
+       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <!-- Load TurfJS from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+  <!-- Load data -->
+      <script src="hosp.js"></script>
+      <script src="lib.js"></script>
+      <script src="lab_10.js"></script>
+      
+    <style type="text/css">
+            body {
+                margin:0; 
+                padding:0; 
+                font-family: 'Catamaran';
+                font: sans-serif; 
+            }
+        #title {
+            position: fixed;
+            top: 2%;
+            left: 5%;
+            width: 60%;
+            font-size: 2em;
+            font-family: "Calibri", sans-serif;
+            letter-spacing: .04em;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid grey;
+            border-radius: 3px;
+            z-index: 800;
+            }
+        #map {
+                position:absolute; 
+                top:0; 
+                bottom:0; 
+                width:100%; 
+                height: 100%; 
+            }
+        #description {
+                    font-family: "calibri", sans-serif;
+                    color: #3b3b3b;
+                    position: fixed;
+                    bottom: 6%;
+                    right: 1%;
+                    width: 220px;
+                    height: 180px;
+                    padding: 10px, 12px;
+                    background-color: rgba(255, 255, 255, 0.8);
+                    border: 1px solid grey;
+                    border-radius: 3px;
+                    z-index: 800;        
+                }
+        #footer {
+            position:fixed;
+            bottom: 0%;
+            left: 0%;
+            right: 0%;
+            clear: both;
+            font-family: "calibri", sans-serif;
+            font-size: 1em;
+            letter-spacing: .04em;
+            height: 3.5%;
+            background-color: rgba(245, 245, 245,0.75);
+            border-radius: 3px;
+            text-align: center;
+            padding-top: 3px;
+            font-style: italic;
+            z-index: 1000;
+            }
+
+        </style>
+  </head>
+<body>
+        <div id='title'>Lab 10: Great Circle Distance Between Draggable Markers</div>
+
+        <div id='map'></div>
+            <script src="lab_10.js"></script>
+    
+        <div id="description">
+            <h3>About this assignment:</h3>
+            <p>This map uses TurfJS to show the great cirle distance and mid-point between two points. The points can be dragged and moved to any location.</p>
+        </div>
+            
+        <div id="footer">Map developed by Madeline Meltesen | <a style="color: darkblue" href='../index.html'>Go back to main page</a></div>
+    
+    </body>
+  
+
+</html>
