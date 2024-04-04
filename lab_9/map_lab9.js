@@ -44,7 +44,7 @@ migrationLayer.addTo(mymap);
 
 var cities = L.geoJson(loc, {
      style: function (feature) {
-        return { color: '#3179b1', weight: 0.5, opacity: 0.7};
+        return { color: 'grey', weight: 1, opacity: 0.35};
     },
     onEachFeature: function(feature, featureLayer) {
         featureLayer.bindTooltip(feature.properties.NAME, {permanent: false, direction: 'right'});
