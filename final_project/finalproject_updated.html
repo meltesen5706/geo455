@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Final Project</title>
+    
+<!-- jQuery from CDN -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<!-- Leaflet from CDN -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<!-- Esri Leaflet from CDN -->
+   <script src="https://unpkg.com/esri-leaflet@3.0.7/dist/esri-leaflet.js"
+    integrity="sha512-ciMHuVIB6ijbjTyEdmy1lfLtBwt0tEHZGhKVXDzW7v7hXOe+Fo3UA1zfydjCLZ0/vLacHkwSARXB5DmtNaoL/g=="
+    crossorigin=""></script>
+<!-- Esri Leaflet Vector from CDN -->
+    <script src="https://unpkg.com/esri-leaflet-vector@3.1.2/dist/esri-leaflet-vector.js"
+    integrity="sha512-SnA/TobYvMdLwGPv48bsO+9ROk7kqKu/tI9TelKQsDe+KZL0TUUWml56TZIMGcpHcVctpaU6Mz4bvboUQDuU3w==" crossorigin=""></script>
+<!-- Leaflet Minimap from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
+<!-- Search plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css" />
+    <script src="https://unpkg.com/leaflet-search/dist/leaflet-search.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.js" integrity="sha512-erNK0f3PSiL/SdS247MoOAK95iJCmfueXT4WG5eyRBR1eOgcE0bI5y2fSEVTQfAS53pTqL/VIQpJXnG99U1n+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+<!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Duru+Sans&family=Port+Lligat+Sans&display=swap" rel="stylesheet">
+    <script src="finalproject.js"></script>
+
+    
+<style>
+    /* Reset default margin and padding */
+    body, h1, p {
+        margin: 0;
+        padding: 0;
+    }
+    /* Set full height for the body */
+    body {
+        height: 100vh;
+        margin: 0;
+        overflow: hidden; /* Hide overflow to prevent scrollbars */
+        position: relative; /* Set relative positioning for absolute positioning of children */
+    }
+    /* Header styles */
+    header {
+            background-color: rgba(2, 47, 92, 0.7);
+            color: white;
+            font-family: "Port Lligat Sans", sans-serif;
+            letter-spacing: 2px;
+            padding: 10px;
+            font-size: 120%;
+            border-radius: 6px;
+            text-align:center;
+            position: absolute;
+            left: .5%;
+            top: 10px;
+            width: 520px;
+            z-index: 2; /* Ensure header is above other elements */
+    }
+
+    #checkboxes {
+        position: absolute;
+        top: 120px;
+        left: 0.5%;
+        width: 200px;
+        height: 145px;
+        background-color: rgba(245, 245, 245, 0.9);
+        font-family: "Roboto", sans-serif;
+        font-size: 100%;
+        border: 1px solid grey;
+        border-radius: 8px;
+        padding: 10px;
+        z-index: 5000;
+    }
+    /* Main content styles */
+    main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 00px; /* Adjust to leave space for the footer */
+            z-index: 0; /* Ensure main content is behind other elements */
+    }
+    #map {
+        width: 100%;
+        height: 100%;
+        background-color: lightgray; /* Just for visualization */
+    }
+    
+/* Slider track styles for WebKit browsers */
+    .slider {
+        position: absolute;
+        bottom: 40px;
+        left: .75%;
+        right: .75%;
+        height: 10px;
+        z-index: 5000;
+        background-image: url(symbols/orange_gradient.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgba(0,76,153, 0.75);
+        border-radius: 10px;
+        border: 1px solid white;
+        padding-left: 10px; 
+        padding-right: 10px;
+        -webkit-appearance: none; /* Remove default styles */
+        appearance: none;
+    }
+/* Slider thumb styles */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Remove default styles */
+        appearance: none;
+        width: 18px; /* Width of the slider thumb */
+        height: 18px; /* Height of the slider thumb */
+        background-color: #808080; /* Color of the slider thumb */
+        border: 1px solid white;
+        border-radius: 50%; /* Border radius to make it round */
+        cursor: pointer; /* Cursor style on hover */
+    }
+    .slider::-moz-range-thumb {
+        width: 18px; /* Width of the slider thumb */
+        height: 18px; /* Height of the slider thumb */
+        background-color: #808080; /* Color of the slider thumb */
+        border: 1px solid white;
+        border-radius: 50%; /* Border radius to make it round */
+        cursor: pointer; /* Cursor style on hover */
+    }
+    /* Change color of slider thumb on hover */
+    .slider::-webkit-slider-thumb:hover {
+        background-color: #3b3b3b!important; /* Change color on hover */
+    }
+    .slider::-moz-range-thumb:hover {
+        background-color: #3b3b3b!important; /* Change color on hover */
+    }
+    #sliderLabels {
+        display: flex;
+        font-family: "Port Lligat Sans", sans-serif;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        justify-content: space-between;
+        background-image: url(symbols/orange_gradient.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgba(0,76,153, 0.85);
+        border: 1px solid white;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        border-radius: 6px;
+        position: absolute;
+        bottom: 12px;
+        left: 0.75%;
+        right: 0.75%;
+        z-index: 5500;
+    }
+    .sliderLabel {
+        font-size: 14px; /* Adjust as needed */
+        color: #282828;
+        text-shadow: 0 0 6px white;
+        width: auto;
+        text-align: center;
+        z-index: 5600;
+    }
+/* Footer style */
+    footer {
+        background-color: rgba(2, 47, 92, 0.7);
+        border-radius: 8px;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        font-style: italic;
+        font-size: 80%;
+        letter-spacing: 1px;
+        padding:4px;
+        text-align: center;
+        position: absolute;
+        right: 0.75%;
+        bottom: 65px;
+        width: 220px;
+        z-index: 2; 
+    }
+/* Basemap Layer Switch */
+    .leaflet-control-layers {
+        background-color: rgba(245, 245, 245, 0.92);
+        font-family: "Roboto", sans-serif;
+        font-size: 120%;
+        border: 1px solid grey;
+        position: fixed;
+        right: 40px;
+        top: 10px;
+        z-index: 1000;
+    }
+    /* Leaflet zoom controls */
+    .leaflet-control-zoom {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        opacity: 90%;
+        z-index: 10000;
+    }
+
+    .leaflet-control-minimap {
+        border: 1px solid white;
+        border-radius: 4px;
+        position: fixed;
+        right: 0.75%;
+        bottom: 90px;
+    }
+    .leaflet-control-scale {
+        position: fixed;
+        left: 0.75%;
+        bottom: 60px;
+    }
+    input[type='radio']:after {
+        width: 11px;
+        height: 11px;
+        border-radius: 15px;
+        top: -.7px;
+        left: -.4px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        background-color: #C06104;
+    }
+    
+    input[type='checkbox'] {
+    /* Hide the default checkbox */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* Define custom size */
+        width: 10px;
+        height: 10px;
+        /* Define custom checkbox style */
+        border: 2px solid #808080; /* Default color */
+        border-radius: 4px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    /* Change color of checkbox when checked */
+    input[type='checkbox']:checked {
+        background-color: #C06104; /* Change to desired color */
+        border-color: #C06104; /* Change to desired color */
+    }
+
+    /* CSS styles for the custom zoom out control button */
+    .custom-button {
+        background-color: rgba(245, 245, 245, 0.9);
+        background-image: url('symbols/globe.png');
+        background-size: 85%; 
+        background-repeat: no-repeat; 
+        background-position: center;
+        border: 1px solid grey;
+        border-radius: 4px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+        width: 31px; 
+        height: 31px; 
+        position: absolute;
+        top: 80px; 
+        right: 0.85px;
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+    
+    #searchControl {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.8);
+        top: 10px;
+        left: 10px;
+        z-index: 10000;
+    }
+
+
+
+    
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>Selected Archaeological Sites <br> Throughout Time in the UK</h1>
+    </header>
+
+    <div id="ZoomOutControl" class="leaflet-control leaflet-bar"></div>
+
+    
+    <div id="checkboxes">
+
+    <!-- Filter Checkboxes -->
+        <p style="margin-bottom: 4px; letter-spacing: 0.5px"><b>Filter by Site Type:</b></p>
+    <!-- Checkboxes for site types -->
+        <label><input type="checkbox" class="site-type" value="burial-hoard" checked> <img src="symbols/burial.png" height="15px"> Burials/Hoards </label><br>
+        <label><input type="checkbox" class="site-type" value="Cave-Early-Human-Occupation" checked> <img src="symbols/cave.png" height="15px"> Cave Shelter/Early <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Human Occupation </label><br>
+        <label><input type="checkbox" class="site-type" value="Settlement" checked> <img src="symbols/settlement.png" height="15px"> Settlements </label><br>
+        <label><input type="checkbox" class="site-type" value="ceremonial-religious" checked> <img src="symbols/ceremony.png" height="15px"> Ceremonial/Religious </label><br>
+        <label><input type="checkbox" class="site-type" value="castle-fort" checked> <img src="symbols/fort.png" height="15px"> Castles/Forts </label><br>
+
+    </div>
+
+    <div id="searchControl"></div>
+
+        <!-- Time Slider -->
+
+        <input type="range" min="0" max="7" value="7" class="slider" id="timeSlider">
+
+        <div id="sliderLabels">
+            <span class="sliderLabel">Paleolithic</span>
+            <span class="sliderLabel">Mesolithic</span>
+            <span class="sliderLabel">Neolithic</span>
+            <span class="sliderLabel">Bronze Age</span>
+            <span class="sliderLabel">Iron Age</span>
+            <span class="sliderLabel">Roman</span>
+            <span class="sliderLabel">Anglo-Saxon</span>
+            <span class="sliderLabel">Medieval</span>
+        </div>
+
+    <main>
+        <div id="map"></div>
+    </main>
+
+    <footer>
+        <p>Map developed by Madeline Meltesen | <a style="color: lightgray" href='../index.html'>Go back to main page</a></p>
+    </footer>
+
+    
+<script>
+
+        var mymap = L.map("map").setView([54.25, -3.5], 6);
+    
+
+   // Define a custom control class for the zoom out button
+        var ZoomOutControl = L.Control.extend({
+            onAdd: function(map) {
+                var button = L.DomUtil.create('button', 'custom-button');
+                button.title = 'Zoom Out to Original Extent';
+                button.onclick = function() {
+                    map.setView([54.25, -3.5], 6); // Set the map view to the original extent
+                };
+                return button;
+            }
+        });
+        // Add the custom control button to the map
+        new ZoomOutControl().addTo(mymap); 
+    
+        var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2NoYXVkaHVyaSIsImEiOiJjazBtcG5odG8wMDltM2JtcjdnYTgyanBnIn0.qwqjMomdrBMG36GQKXBlMw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        });
+
+        var grayscale = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2NoYXVkaHVyaSIsImEiOiJjazBtcG5odG8wMDltM2JtcjdnYTgyanBnIn0.qwqjMomdrBMG36GQKXBlMw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/light-v9',
+            tileSize: 512,
+            zoomOffset: -1
+        });
+
+        var topo = L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
+            layers: 'SRTM30-Colored-Hillshade'
+        });
+
+        streets.addTo(mymap);
+
+        var baseLayers = {
+            'Streets': streets,
+            'Grayscale': grayscale,
+            "Hillshade": topo
+        };
+
+L.control.layers(baseLayers, null, { collapsed: true }).addTo(mymap);
+
+// Add a scalebar 
+L.control.scale({position: 'bottomright', maxWidth: '150', metric: 'True'}).addTo(mymap);
+
+
+//Create locator map
+    var miniMap = new L.Control.MiniMap(L.tileLayer('https://api.maptiler.com/maps/topo/{z}/{x}/{y}.png?key=tZnptaeI9RvKHsX18rbW'), {
+        toggleDisplay: true,
+    }).addTo(mymap);
+
+
+// Site data 
+    var siteData = [ 
+                { name: "Paviland Cave", coordinates: [51.550144, -4.255517], age: "Paleolithic", type: "burial-hoard" },
+                { name: "Kents Cavern", coordinates: [50.46772, -3.502676], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
+                { name: "Gough's Cave", coordinates: [51.2819, -2.7654], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
+                { name: "Creswell Crags", coordinates: [53.26347, -1.193535], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
+                { name: "Eartham Pit", coordinates: [50.869542, -0.689675], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
+                { name: "Swanscombe", coordinates: [51.444256, 0.296609], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
+                { name: "Happisburgh", coordinates: [52.825278, 1.535], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
+                { name: "Star Carr", coordinates: [54.214167, -0.423333], age: "Mesolithic", type: "Settlement" },
+                { name: "Howick", coordinates: [55.454, -1.593], age: "Mesolithic", type: "Settlement" },
+                { name: "Oare Marshes", coordinates: [51.344, 0.886], age: "Mesolithic", type: "Settlement" },
+                { name: "Low Hauxley", coordinates: [55.3184, -1.5512], age: "Mesolithic", type: "Settlement" },
+                { name: "Llyn Fawr", coordinates: [51.719722, -3.568333], age: "Mesolithic", type: "Settlement" },
+                { name: "Mount Sandel", coordinates: [55.1161, -6.6642], age: "Mesolithic", type: "Settlement" },
+                { name: "Skara Brae", coordinates: [59.048714, -3.34175], age: "Neolithic", type: "Settlement" },
+                { name: "Pentre Ifan", coordinates: [51.999, -4.77], age: "Neolithic", type: "burial-hoard" },
+                { name: "Bryn Celli Ddu", coordinates: [53.2077, -4.2361], age: "Neolithic", type: "burial-hoard" },
+                { name: "Stonehenge", coordinates: [51.178889, -1.826111], age: "Neolithic", type: "ceremonial-religious" },
+                { name: "Avebury", coordinates: [51.428611, -1.854167], age: "Neolithic", type: "ceremonial-religious" },
+                { name: "Silbury Hill", coordinates: [51.4157, -1.8574], age: "Neolithic", type: "ceremonial-religious" },
+                { name: "Callanish Stones", coordinates: [58.197541, -6.745145], age: "Neolithic", type: "ceremonial-religious" },
+                { name: "Ring of Brodgar", coordinates: [59.001482, -3.229723], age: "Neolithic", type: "ceremonial-religious" },
+                { name: "Must Farm", coordinates: [52.555236, -0.177319], age: "Bronze Age", type: "Settlement" },
+                { name: "Grimspound", coordinates: [50.61331, -3.83738], age: "Bronze Age", type: "Settlement" },
+                { name: "Flag Fen", coordinates: [52.574, -0.19], age: "Bronze Age", type: "ceremonial-religious" },
+                { name: "Beaghmore", coordinates: [54.701466, -6.938701], age: "Bronze Age", type: "ceremonial-religious" },
+                { name: "Milton Keynes Hoard", coordinates: [52.033, -0.711], age: "Bronze Age", type: "burial-hoard" },
+                { name: "Rillaton Barrow", coordinates: [50.5211, -4.4557], age: "Bronze Age", type: "burial-hoard" },
+                { name: "Glastonbury Lake Village", coordinates: [51.163611, -2.725833], age: "Iron Age", type: "Settlement" },
+                { name: "Carn Euny", coordinates: [50.10234, -5.63448], age: "Iron Age", type: "Settlement" },
+                { name: "Old Oswestry Hillfort", coordinates: [52.87273, -3.04886], age: "Iron Age", type: "castle-fort" },
+                { name: "Maiden Castle", coordinates: [50.695, -2.47], age: "Iron Age", type: "castle-fort" },
+                { name: "Danebury Hill Fort", coordinates: [51.136681, -1.537569], age: "Iron Age", type: "castle-fort" },
+                { name: "Honington Camp", coordinates: [52.969925, -0.580756], age: "Iron Age", type: "castle-fort" },
+                { name: "Llyn Cerrig Bach", coordinates: [53.25885, -4.540288], age: "Iron Age", type: "burial-hoard" },
+                { name: "Roman Temple of Mithras", coordinates: [51.5125, -0.0906], age: "Roman", type: "ceremonial-religious" },
+                { name: "Roman Baths", coordinates: [51.3809, -2.3595], age: "Roman", type: "ceremonial-religious" },
+                { name: "Hoxne Hoard", coordinates: [52.3425, 1.1875], age: "Roman", type: "burial-hoard" },
+                { name: "Colchester Roman Town", coordinates: [51.891944, 0.898056], age: "Roman", type: "Settlement" },
+                { name: "Vindolanda", coordinates: [54.9911, -2.3608], age: "Roman", type: "castle-fort" },
+                { name: "Housesteads Roman Fort", coordinates: [55.013, -2.331], age: "Roman", type: "castle-fort" },
+                { name: "Bamburgh Castle", coordinates: [55.608, -1.709], age: "Anglo-Saxon", type: "castle-fort" },
+                { name: "Lindisfarne Priory", coordinates: [55.68, -1.8025], age: "Anglo-Saxon", type: "ceremonial-religious" },
+                { name: "Repton Abbey", coordinates: [52.841308, -1.55102], age: "Anglo-Saxon", type: "ceremonial-religious" },
+                { name: "Bedale Hoard", coordinates: [54.29, -1.59], age: "Anglo-Saxon", type: "burial-hoard" },
+                { name: "Prittlewell Princely Burial", coordinates: [51.55391, 0.70873], age: "Anglo-Saxon", type: "burial-hoard" },
+                { name: "Sutton Hoo", coordinates: [52.089, 1.338], age: "Anglo-Saxon", type: "burial-hoard" },
+                { name: "Spong Hill", coordinates: [52.737, 0.934], age: "Anglo-Saxon", type: "burial-hoard" },
+                { name: "Canterbury Cathedral", coordinates: [51.2797, 1.0831], age: "Medieval", type: "ceremonial-religious" },
+                { name: "Salisbury Cathedral", coordinates: [51.064722, -1.7975], age: "Medieval", type: "ceremonial-religious" },
+                { name: "York Minster", coordinates: [53.961944, -1.081944], age: "Medieval", type: "ceremonial-religious" },
+                { name: "Bodiam Castle", coordinates: [51.0023, 0.5435], age: "Medieval", type: "castle-fort" },
+                { name: "Caernarfon Castle", coordinates: [53.1393, -4.2769], age: "Medieval", type: "castle-fort" }
+            ];
+// Time periods ordered from earliest to latest
+
+const timePeriods = [
+    "Paleolithic",
+    "Mesolithic",
+    "Neolithic",
+    "Bronze Age",
+    "Iron Age",
+    "Roman",
+    "Anglo-Saxon",
+    "Medieval"
+];
+
+
+// Create markers and associate them with layers
+let markers = [];
+
+siteData.forEach(site => {
+    const customIcon = L.icon({
+        iconUrl: `site-symbols/${site.name.toLowerCase().replace(/\s+/g, '-')}.png`, // URL to the custom icon image
+        iconSize: [22, 36] // Adjust the size of the custom icon as needed
+    });    
+    
+    const marker = L.marker(site.coordinates, {icon: customIcon, title: site.name})
+        .bindPopup(`<strong>${site.name}</strong><br>${site.age}<br>${site.description}`);
+   
+// Add marker to an array with additional info
+    markers.push({
+        marker: marker,
+        age: site.age,
+        type: site.type
+    });
+});
+
+
+// Function to update visible markers based on the slider and checkboxes
+function updateMarkers() {
+    const sliderValue = document.getElementById("timeSlider").value;
+    const selectedPeriod = timePeriods[sliderValue];
+    const selectedTypes = Array.from(document.querySelectorAll(".site-type:checked")).map(checkbox => checkbox.value);
+
+    // Hide all markers first
+    markers.forEach(obj => {
+        if (mymap.hasLayer(obj.marker)) {
+            mymap.removeLayer(obj.marker);
+        }
+    });
+
+    // Show markers that meet the criteria
+    markers.forEach(obj => {
+        const periodIndex = timePeriods.indexOf(obj.age);
+        if (periodIndex <= sliderValue && selectedTypes.includes(obj.type)) {
+            obj.marker.addTo(mymap);
+        }
+    });
+
+    // Update label to show selected period
+    document.getElementById("currentPeriod").innerText = `Current Period: ${selectedPeriod}`;
+}
+
+// Add event listeners to checkboxes to trigger the updateMarkers function when they change
+document.querySelectorAll(".site-type").forEach(checkbox => {
+    checkbox.addEventListener("change", updateMarkers);
+});
+
+// Initialize map and markers
+document.getElementById("timeSlider").addEventListener("input", updateMarkers);
+    
+// Initially update markers based on the default slider value and selected checkboxes
+updateMarkers();
+    
+// BASELAYER CONTROLS
+L.control.layers(baseLayers).addTo(mymap);
+   
+    
+// SEARCH BAR 
+// Add search control to the map
+var searchControl = new L.Control.Search({
+    position:'topleft',
+    layer: markers, // Use the LayerGroup for markers
+    propertyName: 'name', // Attribute value to search by
+    marker: false,
+    markeranimate: true,
+    delayType: 50, // Can change this value
+    collapsed: false,
+    textPlaceholder: 'Search by site name',   
+    moveToLocation: function(latlng, title, map) {
+        mymap.setView(latlng, 15);
+    }
+});
+
+mymap.addControl(searchControl); 
+
+    
+
+</script>
+
+</body>
+</html>
