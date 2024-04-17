@@ -21,15 +21,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
 <!-- Search plugin -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css">
     <script src="https://unpkg.com/leaflet-search/dist/leaflet-search.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.js" integrity="sha512-erNK0f3PSiL/SdS247MoOAK95iJCmfueXT4WG5eyRBR1eOgcE0bI5y2fSEVTQfAS53pTqL/VIQpJXnG99U1n+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
 <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Duru+Sans&family=Port+Lligat+Sans&display=swap" rel="stylesheet">
-    <script src="finalproject.js"></script>
+
 
     
 <style>
@@ -54,9 +53,10 @@
             padding: 10px;
             font-size: 120%;
             border-radius: 6px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
             text-align:center;
             position: absolute;
-            left: .5%;
+            left: 10px;
             top: 10px;
             width: 55S0px;
             z-index: 2; /* Ensure header is above other elements */
@@ -64,15 +64,16 @@
 
     #checkboxes {
         position: absolute;
-        top: 120px;
-        left: 0.5%;
+        top: 122px;
+        left: 10px;
         width: 200px;
         height: 145px;
-        background-color: rgba(245, 245, 245, 0.9);
+        background-color: rgba(245, 245, 245, 0.92);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
         font-family: "Roboto", sans-serif;
         font-size: 100%;
-        border: 1px solid grey;
-        border-radius: 8px;
+        border: 1px;
+        border-radius: 6px;
         padding: 10px;
         z-index: 5000;
     }
@@ -105,6 +106,7 @@
         background-color: rgba(0,76,153, 0.75);
         border-radius: 10px;
         border: 1px solid white;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
         padding-left: 10px; 
         padding-right: 10px;
         -webkit-appearance: none; /* Remove default styles */
@@ -114,16 +116,16 @@
     .slider::-webkit-slider-thumb {
         -webkit-appearance: none; /* Remove default styles */
         appearance: none;
-        width: 18px; /* Width of the slider thumb */
-        height: 18px; /* Height of the slider thumb */
+        width: 20px; /* Width of the slider thumb */
+        height: 20px; /* Height of the slider thumb */
         background-color: #808080; /* Color of the slider thumb */
         border: 1px solid white;
         border-radius: 50%; /* Border radius to make it round */
         cursor: pointer; /* Cursor style on hover */
     }
     .slider::-moz-range-thumb {
-        width: 18px; /* Width of the slider thumb */
-        height: 18px; /* Height of the slider thumb */
+        width: 20px; /* Width of the slider thumb */
+        height: 20px; /* Height of the slider thumb */
         background-color: #808080; /* Color of the slider thumb */
         border: 1px solid white;
         border-radius: 50%; /* Border radius to make it round */
@@ -147,13 +149,14 @@
         background-size: cover;
         background-color: rgba(0,76,153, 0.85);
         border: 1px solid white;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
         padding-left: 6px;
         padding-right: 6px;
         padding-top: 2px;
         padding-bottom: 2px;
         border-radius: 6px;
         position: absolute;
-        bottom: 12px;
+        bottom: 15px;
         left: 0.75%;
         right: 0.75%;
         z-index: 5500;
@@ -170,6 +173,7 @@
     footer {
         background-color: rgba(2, 47, 92, 0.7);
         border-radius: 8px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
         color: white;
         font-family: "Roboto", sans-serif;
         font-style: italic;
@@ -188,7 +192,7 @@
         background-color: rgba(245, 245, 245, 0.92);
         font-family: "Roboto", sans-serif;
         font-size: 120%;
-        border: 1px solid grey;
+        border: 1px solid white;
         position: fixed;
         right: 40px;
         top: 10px;
@@ -197,15 +201,40 @@
     /* Leaflet zoom controls */
     .leaflet-control-zoom {
         position: fixed;
+        border: 1px solid white;
         right: 10px;
         top: 10px;
         opacity: 90%;
         z-index: 10000;
     }
 
+    /* Custom CSS for the Leaflet Search Bar */
+    .leaflet-control-search {
+        border: 1px solid white;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+        opacity: 0.9;
+    }
+
+    .leaflet-control-search input {
+        color: #333;
+        font-family: 'Roboto', sans-serif;
+        padding: 6px;
+        border: none;
+        width: 220px; /* Adjust width as per your requirement */
+        box-sizing: border-box; /* Helps include padding in width */
+    }    
+    
+    /* Adjust the position of the search box if necessary */
+    .leaflet-top .leaflet-control-search {
+        top: 112px;
+        left: 230px;
+    }    
     .leaflet-control-minimap {
         border: 1px solid white;
         border-radius: 4px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
         position: fixed;
         right: 0.75%;
         bottom: 90px;
@@ -272,17 +301,7 @@
         cursor: pointer; /* Change cursor to pointer on hover */
     }
     
-    #searchControl {
-        position: absolute;
-        background-color: rgba(255, 255, 255, 0.8);
-        top: 10px;
-        left: 10px;
-        z-index: 10000;
-    }
 
-
-
-    
 </style>
 </head>
 <body>
@@ -294,7 +313,7 @@
     <div id="ZoomOutControl" class="leaflet-control leaflet-bar"></div>
 
     
-    <div id="checkboxes">
+    <div id="checkboxes" style="background-color: rgba (255,255,255,.85)">
 
     <!-- Filter Checkboxes -->
         <p style="margin-bottom: 4px; letter-spacing: 0.5px"><b>Filter by Site Type:</b></p>
@@ -306,8 +325,6 @@
         <label><input type="checkbox" class="site-type" value="castle-fort" checked> <img src="symbols/fort.png" height="15px"> Castles/Forts </label><br>
 
     </div>
-
-    <div id="searchControl"></div>
 
         <!-- Time Slider -->
 
@@ -337,7 +354,98 @@
 
         var mymap = L.map("map").setView([54.25, -3.5], 6);
     
+// SEARCH BAR   
 
+        var myIcon = L.icon({
+            iconUrl: 'sitelocation.png',
+            iconSize: [5, 5],
+            iconAnchor: [0, 0],
+            popupAnchor: [0, 0],
+        });
+        
+        var siteLayer = L.layerGroup().addTo(mymap);
+
+        var sites = [
+            { title: "Paviland", location: [51.550144, -4.255517] },
+            { title: "Kents Cavern", location: [50.46772, -3.502676] },
+            { title: "Gough's Cave", location: [51.2819, -2.7654] },
+            { title: "Creswell Crags", location: [53.26347, -1.193535] },
+            { title: "Eartham Pit", location: [50.869542, -0.689675] },
+            { title: "Swanscombe", location: [51.444256, 0.296609] },
+            { title: "Happisburgh", location: [52.825278, 1.535] },
+            { title: "Star Carr", location: [54.214167, -0.423333] },
+            { title: "Howick", location: [55.454, -1.593] },
+            { title: "Oare Marshes", location: [51.344, 0.886] },
+            { title: "Low Hauxley", location: [55.3184, -1.5512] },
+            { title: "Llyn Fawr", location: [51.719722, -3.568333] },
+            { title: "Mount Sandel", location: [55.1161, -6.6642] },
+            { title: "Skara Brae", location: [59.048714, -3.34175] },
+            { title: "Pentre Ifan", location: [51.999, -4.77] },
+            { title: "Bryn Celli Ddu", location: [53.2077, -4.2361] },
+            { title: "Stonehenge", location: [51.178889, -1.826111] },
+            { title: "Avebury", location: [51.428611, -1.854167] },
+            { title: "Silbury Hill", location: [51.4157, -1.8574] },
+            { title: "Callanish Stones", location: [58.197541, -6.745145] },
+            { title: "Ring of Brodgar", location: [59.001482, -3.229723] },
+            { title: "Must Farm", location: [52.555236, -0.177319] },
+            { title: "Grimspound", location: [50.61331, -3.83738] },
+            { title: "Flag Fen", location: [52.574, -0.19] },
+            { title: "Beaghmore", location: [54.701466, -6.938701] },
+            { title: "Milton Keynes Hoard", location: [52.033, -0.711] },
+            { title: "Rillaton Barrow", location: [50.5211, -4.4557] },
+            { title: "Glastonbury Lake Village", location: [51.163611, -2.725833] },
+            { title: "Carn Euny", location: [50.10234, -5.63448] },
+            { title: "Old Oswestry Hillfort", location: [52.87273, -3.04886] },
+            { title: "Maiden Castle", location: [50.695, -2.47] },
+            { title: "Danebury Hill Fort", location: [51.136681, -1.537569] },
+            { title: "Honington Camp", location: [52.969925, -0.580756] },
+            { title: "Llyn Cerrig Bach", location: [53.25885, -4.540288] },
+            { title: "Roman Temple of Mithras", location: [51.5125, -0.0906] },
+            { title: "Roman Baths", location: [51.3809, -2.3595] },
+            { title: "Hoxne Hoard", location: [52.3425, 1.1875] },
+            { title: "Colchester Roman Town", location: [51.891944, 0.898056] },
+            { title: "Vindolanda", location: [54.9911, -2.3608] },
+            { title: "Housesteads Roman Fort", location: [55.013, -2.331] },
+            { title: "Bamburgh Castle", location: [55.608, -1.709] },
+            { title: "Lindisfarne Priory", location: [55.68, -1.8025] },
+            { title: "Repton Abbey", location: [52.841308, -1.55102] },
+            { title: "Bedale Hoard", location: [54.29, -1.59] },
+            { title: "Prittlewell Princely Burial", location: [51.55391, 0.70873] },
+            { title: "Sutton Hoo", location: [52.089, 1.338] },
+            { title: "Spong Hill", location: [52.737, 0.934] },
+            { title: "Canterbury Cathedral", location: [51.2797, 1.0831] },
+            { title: "Salisbury Cathedral", location: [51.064722, -1.7975] },
+            { title: "York Minster", location: [53.961944, -1.081944] },
+            { title: "Bodiam Castle", location: [51.0023, 0.5435] },
+            { title: "Caernarfon Castle", location: [53.1393, -4.2769] }
+        ];
+
+    sites.forEach(function(site) {
+        var marker = L.marker(site.location, { icon: myIcon, title: site.title }).bindPopup(site.title);
+        marker.addTo(siteLayer);
+    });
+
+    var searchControl = new L.Control.Search({
+        position: 'topleft',
+        layer: siteLayer,
+        propertyName: 'title',
+        marker: false,
+        collapsed: false,  
+        moveToLocation: function(latlng, title, map) {
+            console.log("Moving to location: ", latlng, "Title: ", title);  // Debugging output
+            map.setView(latlng, 12); // Set the zoom level here
+            var marker = siteLayer.getLayers().find(m => m.getPopup().getContent() === title);
+
+        }
+    });
+
+    searchControl.on('search:locationfound', function(e) {
+        console.log("Search location found: ", e);  // Debugging output
+    });
+
+    mymap.addControl(searchControl);
+
+    
    // Define a custom control class for the zoom out button
         var ZoomOutControl = L.Control.extend({
             onAdd: function(map) {
@@ -385,7 +493,7 @@
 L.control.layers(baseLayers, null, { collapsed: true }).addTo(mymap);
 
 // Add a scalebar 
-L.control.scale({position: 'bottomright', maxWidth: '150', metric: 'True'}).addTo(mymap);
+L.control.scale({maxWidth: '150', metric: 'True'}).addTo(mymap);
 
 
 //Create locator map
@@ -394,8 +502,9 @@ L.control.scale({position: 'bottomright', maxWidth: '150', metric: 'True'}).addT
     }).addTo(mymap);
 
 
-// Site data 
-    var siteData = [ 
+// Site data
+    
+        var siteData = [ 
                 { name: "Paviland Cave", coordinates: [51.550144, -4.255517], age: "Paleolithic", type: "burial-hoard" },
                 { name: "Kents Cavern", coordinates: [50.46772, -3.502676], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
                 { name: "Gough's Cave", coordinates: [51.2819, -2.7654], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
@@ -469,7 +578,10 @@ let markers = [];
 siteData.forEach(site => {
     const customIcon = L.icon({
         iconUrl: `site-symbols/${site.name.toLowerCase().replace(/\s+/g, '-')}.png`, // URL to the custom icon image
-        iconSize: [22, 36] // Adjust the size of the custom icon as needed
+        iconSize: [22, 36], // Adjust the size of the custom icon as needed
+        iconAnchor: [9, 32],
+        popupAnchor: [5, 5],
+        
     });    
     
     const marker = L.marker(site.coordinates, {icon: customIcon, title: site.name})
@@ -485,6 +597,7 @@ siteData.forEach(site => {
 
 
 // Function to update visible markers based on the slider and checkboxes
+    
 function updateMarkers() {
     const sliderValue = document.getElementById("timeSlider").value;
     const selectedPeriod = timePeriods[sliderValue];
@@ -510,6 +623,7 @@ function updateMarkers() {
 }
 
 // Add event listeners to checkboxes to trigger the updateMarkers function when they change
+    
 document.querySelectorAll(".site-type").forEach(checkbox => {
     checkbox.addEventListener("change", updateMarkers);
 });
@@ -523,25 +637,6 @@ updateMarkers();
 // BASELAYER CONTROLS
 L.control.layers(baseLayers).addTo(mymap);
    
-    
-// SEARCH BAR 
-// Add search control to the map
-var searchControl = new L.Control.Search({
-    position:'topleft',
-    layer: markers, // Use the LayerGroup for markers
-    propertyName: 'name', // Attribute value to search by
-    marker: false,
-    markeranimate: true,
-    delayType: 50, // Can change this value
-    collapsed: false,
-    textPlaceholder: 'Search by site name',   
-    moveToLocation: function(latlng, title, map) {
-        mymap.setView(latlng, 15);
-    }
-});
-
-mymap.addControl(searchControl); 
-
     
 
 </script>
