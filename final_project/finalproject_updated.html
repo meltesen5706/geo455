@@ -29,22 +29,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Duru+Sans&family=Port+Lligat+Sans&display=swap" rel="stylesheet">
 
-
     
 <style>
-    /* Reset default margin and padding */
     body, h1, p {
         margin: 0;
         padding: 0;
     }
-    /* Set full height for the body */
     body {
         height: 100vh;
         margin: 0;
         overflow: hidden; /* Hide overflow to prevent scrollbars */
         position: relative; /* Set relative positioning for absolute positioning of children */
     }
-    /* Header styles */
     header {
             background-color: rgba(2, 47, 92, 0.7);
             color: white;
@@ -64,12 +60,12 @@
 
     #checkboxes {
         position: absolute;
-        top: 122px;
+        top: 254px;
         left: 10px;
         width: 200px;
         height: 145px;
         background-color: rgba(245, 245, 245, 0.92);
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);       
         font-family: "Roboto", sans-serif;
         font-size: 100%;
         border: 1px;
@@ -77,7 +73,6 @@
         padding: 10px;
         z-index: 5000;
     }
-    /* Main content styles */
     main {
             position: absolute;
             top: 0;
@@ -182,7 +177,7 @@
         padding:4px;
         text-align: center;
         position: absolute;
-        right: 0.75%;
+        right: 10px;
         bottom: 65px;
         width: 220px;
         z-index: 2; 
@@ -205,44 +200,46 @@
         right: 10px;
         top: 10px;
         opacity: 90%;
-        z-index: 10000;
     }
 
     /* Custom CSS for the Leaflet Search Bar */
     .leaflet-control-search {
         border: 1px solid white;
         border-radius: 8px;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.95);
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
-        opacity: 0.9;
+        opacity: 0.95;
+        z-index: 10000;
     }
-
     .leaflet-control-search input {
         color: #333;
         font-family: 'Roboto', sans-serif;
         padding: 6px;
         border: none;
-        width: 220px; /* Adjust width as per your requirement */
+        width: 183px; /* Adjust width as per your requirement */
         box-sizing: border-box; /* Helps include padding in width */
+        z-index: 10000;
     }    
-    
     /* Adjust the position of the search box if necessary */
     .leaflet-top .leaflet-control-search {
-        top: 112px;
-        left: 230px;
-    }    
+        top: 602px;
+        left: 0px;
+        z-index: 10000;
+    }
+    
     .leaflet-control-minimap {
         border: 1px solid white;
         border-radius: 4px;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
         position: fixed;
-        right: 0.75%;
-        bottom: 90px;
+        right: 2px;
+        bottom: 124px;
     }
     .leaflet-control-scale {
         position: fixed;
-        left: 0.75%;
-        bottom: 60px;
+        right: 11px;
+        bottom: 108px;
+        background-color: rgba(255, 255, 255, 0.6);
     }
     input[type='radio']:after {
         width: 11px;
@@ -300,8 +297,99 @@
         right: 0.85px;
         cursor: pointer; /* Change cursor to pointer on hover */
     }
+    #sitelist {
+        position: absolute;
+        top: 448px;
+        left: 10px;
+        width: 200px;
+        height: 140px;
+        background-color: rgba(245, 245, 245, 0.92);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);       
+        font-family: "Roboto", sans-serif;
+        z-index: 4000;
+        border-radius: 6px;
+        padding: 10px;
+        overflow-y: auto; /* Enable vertical scroll if needed */
+    }
+    /* SITE LIST BUTTON */
+        .toggle-button {
+            position: absolute;
+            top: 425px;
+            left: 10px;
+            width: 220px;
+            padding: 4px 10px;
+            font-family: "Roboto", sans-serif;
+            font-size: 100%;
+            background-color: grey;
+            opacity: 92%;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);       
+            cursor: pointer;
+            z-index: 5000;
+        }
+        /* Style for the hidden list */
+        .hidden {
+            display: none;
+        }
     
-
+        .leaflet-popup-tip,
+        .leaflet-popup-content-wrapper {
+            background: white;
+            color: black;
+            min-width: 230px;
+            }
+    
+    #about {
+        position: absolute;
+        top: 118px;
+        left: 10px;
+        width: 410px;
+        height: 110px;
+        background-color: rgba(220,163,108, 0.92);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);       
+        font-family: "Roboto", sans-serif;
+        color: white;
+        z-index: 4000;
+        border-radius: 6px;
+        padding: 10px;   
+        font-size: 100%;
+        border: 1px;
+    }
+    #sitelist li {
+        cursor: pointer; /* Changes cursor to pointer when hovering over list items */
+    }
+    
+    .splash-screen {
+          position: fixed;
+          top: 30%;
+          left: 25%;
+          width: 45%;
+          height: 25%;
+          background-color: rgba(0, 0, 0, 0.7);
+          display: flex;
+          padding: 20px;
+          font-family: "Roboto", sans-serif;
+          justify-content: center;
+          align-items: center;
+          border-radius: 6px;
+          z-index: 9999;
+          overflow-y: auto; /* Enable vertical scroll if needed */
+    }
+    .splash-content {
+          text-align: center;
+          color: white;
+    }   
+    /* Styling for the close button */
+    .close-button {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          cursor: pointer;
+          color: white;
+          font-size: 24px;
+    }
 </style>
 </head>
 <body>
@@ -310,8 +398,81 @@
         <h1>Selected Archaeological Sites <br> Throughout Time in the UK</h1>
     </header>
 
-    <div id="ZoomOutControl" class="leaflet-control leaflet-bar"></div>
+    
+      <div class="splash-screen" id="splash-screen">
+        <span class="close-button" onclick="closeSplashScreen()">&times;</span>
+        <div class="splash-content">
+          <h1>Welcome to the Map!</h1><br>
+          <p style="font-size: 110%">The history of humans in the UK extends to over 900,000 years ago, during the Paleolithic period. Archaeologists have worked (and still work) to uncover this past and share it with the public, and yet many are still not familiar with the history right below their feet. This web map aims to expose viewers to a selection of the myriad of archaeological sites that exist in the UK today so that people have the opportunity to explore the past, from the Paleolithic all the way up to Medieval times (ca. 1500 AD). </p>
+        </div>
+      </div>
+    
+    
+    <button class="toggle-button" onclick="toggleList()">Show/Hide List of Sites</button>
 
+    <div id="about">
+        <p style="letter-spacing: 0.5px"><b>About the Map:</b></p>
+        <p style="margin-top: 6px; font-size: 90%">This map highlights archaeological sites in the United Kingdom. Use the checkboxes below to filter the sites based on their type and the range slider at the bottom of the page to filter sites by their age. Click any site name from the list below to zoom to its location or type the site name into the search bar.</p>
+    </div>
+    
+    <div id="sitelist">
+        
+            <ul style="margin-top: 5px; margin-bottom: 0px; margin-left: 0px; padding-left: 20px; font-size: 85%; font-family: 'Roboto', sans-serif">
+                <li onclick="zoomToSite(51.428611, -1.854167)">Avebury</li>
+                <li onclick="zoomToSite(55.608, -1.709)">Bamburgh Castle</li>
+                <li onclick="zoomToSite(54.701466, -6.938701)">Beaghmore</li>
+                <li onclick="zoomToSite(54.29, -1.59)">Bedale Hoard</li>
+                <li onclick="zoomToSite(51.0023, 0.5435)">Bodiam Castle</li>
+                <li onclick="zoomToSite(53.2077, -4.2361)">Bryn Celli Ddu</li>
+                <li onclick="zoomToSite(53.1393, -4.2769)">Caernarfon Castle</li>
+                <li onclick="zoomToSite(58.197541, -6.745145)">Callanish Stones</li>
+                <li onclick="zoomToSite(51.2797, 1.0831)">Canterbury Cathedral</li>
+                <li onclick="zoomToSite(50.10234, -5.63448)">Carn Euny</li>
+                <li onclick="zoomToSite(51.891944, 0.898056)">Colchester Roman Town</li>
+                <li onclick="zoomToSite(53.26347, -1.193535)">Creswell Crags</li>
+                <li onclick="zoomToSite(51.136681, -1.537569)">Danebury Hill Fort</li>
+                <li onclick="zoomToSite(50.869542, -0.689675)">Eartham Pit</li>
+                <li onclick="zoomToSite(52.574, -0.19)">Flag Fen</li>
+                <li onclick="zoomToSite(51.163611, -2.725833)">Glastonbury Lake Village</li>
+                <li onclick="zoomToSite(51.2819, -2.7654)">Gough's Cave</li>
+                <li onclick="zoomToSite(50.61331, -3.83738)">Grimspound</li>
+                <li onclick="zoomToSite(52.825278, 1.535)">Happisburgh</li>
+                <li onclick="zoomToSite(52.969925, -0.580756)">Honington Camp</li>
+                <li onclick="zoomToSite(55.013, -2.331)">Housesteads Roman Fort</li>
+                <li onclick="zoomToSite(55.454, -1.593)">Howick</li>
+                <li onclick="zoomToSite(52.3425, 1.1875)">Hoxne Hoard</li>
+                <li onclick="zoomToSite(50.46772, -3.502676)">Kents Cavern</li>
+                <li onclick="zoomToSite(55.68, -1.8025)">Lindisfarne Priory</li>
+                <li onclick="zoomToSite(53.25885, -4.540288)">Llyn Cerrig Bach</li>
+                <li onclick="zoomToSite(51.719722, -3.568333)">Llyn Fawr</li>
+                <li onclick="zoomToSite(55.3184, -1.5512)">Low Hauxley</li>
+                <li onclick="zoomToSite(50.695, -2.47)">Maiden Castle</li>
+                <li onclick="zoomToSite(52.033, -0.711)">Milton Keynes Hoard</li>
+                <li onclick="zoomToSite(55.1161, -6.6642)">Mount Sandel</li>
+                <li onclick="zoomToSite(52.555236, -0.177319)">Must Farm</li>
+                <li onclick="zoomToSite(52.87273, -3.04886)">Old Oswestry Hillfort</li>
+                <li onclick="zoomToSite(51.550144, -4.255517)">Paviland Cave</li>
+                <li onclick="zoomToSite(51.999, -4.77)">Pentre Ifan</li>
+                <li onclick="zoomToSite(51.55391, 0.70873)">Prittlewell Princely Burial</li>
+                <li onclick="zoomToSite(52.841308, -1.55102)">Repton Abbey</li>
+                <li onclick="zoomToSite(50.5211, -4.4557)">Rillaton Barrow</li>
+                <li onclick="zoomToSite(59.001482, -3.229723)">Ring of Brodgar</li>
+                <li onclick="zoomToSite(51.3809, -2.3595)">Roman Baths</li>
+                <li onclick="zoomToSite(51.5125, -0.0906)">Roman Temple of Mithras</li>
+                <li onclick="zoomToSite(51.064722, -1.7975)">Salisbury Cathedral</li>
+                <li onclick="zoomToSite(51.4157, -1.8574)">Silbury Hill</li>
+                <li onclick="zoomToSite(59.048714, -3.34175)">Skara Brae</li>
+                <li onclick="zoomToSite(52.737, 0.934)">Spong Hill</li>
+                <li onclick="zoomToSite(54.214167, -0.423333)">Star Carr </li>
+                <li onclick="zoomToSite(51.178889, -1.826111)">Stonehenge</li>
+                <li onclick="zoomToSite(52.089, 1.338)">Sutton Hoo</li>
+                <li onclick="zoomToSite(51.444256, 0.296609)">Swanscombe</li>
+                <li onclick="zoomToSite(54.9911, -2.3608)">Vindolanda</li>
+                <li onclick="zoomToSite(53.961944, -1.081944)">York Minster</li>                           
+            </ul>
+    </div>
+    
+    <div id="ZoomOutControl" class="leaflet-control leaflet-bar"></div>
     
     <div id="checkboxes" style="background-color: rgba (255,255,255,.85)">
 
@@ -352,114 +513,143 @@
     
 <script>
 
-        var mymap = L.map("map").setView([54.25, -3.5], 6);
+    // Function to close the splash screen
+    function closeSplashScreen() {
+      document.getElementById("splash-screen").style.display = "none";
+    }
+    
+    // toggle visibility of list
+        function toggleList() {
+            var list = document.getElementById("sitelist");
+            if (list.classList.contains("hidden")) {
+                list.classList.remove("hidden");
+            } else {
+                list.classList.add("hidden");
+            }
+        }
+    
+// CREATE MAP
+    var mymap = L.map("map").setView([54.25, -3.5], 6);
     
 // SEARCH BAR   
-
         var myIcon = L.icon({
             iconUrl: 'sitelocation.png',
-            iconSize: [5, 5],
+            iconSize: [7, 7],
             iconAnchor: [0, 0],
-            popupAnchor: [0, 0],
+            popupAnchor: [0, 10],
         });
         
         var siteLayer = L.layerGroup().addTo(mymap);
 
-        var sites = [
-            { title: "Paviland", location: [51.550144, -4.255517] },
-            { title: "Kents Cavern", location: [50.46772, -3.502676] },
-            { title: "Gough's Cave", location: [51.2819, -2.7654] },
-            { title: "Creswell Crags", location: [53.26347, -1.193535] },
-            { title: "Eartham Pit", location: [50.869542, -0.689675] },
-            { title: "Swanscombe", location: [51.444256, 0.296609] },
-            { title: "Happisburgh", location: [52.825278, 1.535] },
-            { title: "Star Carr", location: [54.214167, -0.423333] },
-            { title: "Howick", location: [55.454, -1.593] },
-            { title: "Oare Marshes", location: [51.344, 0.886] },
-            { title: "Low Hauxley", location: [55.3184, -1.5512] },
-            { title: "Llyn Fawr", location: [51.719722, -3.568333] },
-            { title: "Mount Sandel", location: [55.1161, -6.6642] },
-            { title: "Skara Brae", location: [59.048714, -3.34175] },
-            { title: "Pentre Ifan", location: [51.999, -4.77] },
-            { title: "Bryn Celli Ddu", location: [53.2077, -4.2361] },
-            { title: "Stonehenge", location: [51.178889, -1.826111] },
-            { title: "Avebury", location: [51.428611, -1.854167] },
-            { title: "Silbury Hill", location: [51.4157, -1.8574] },
-            { title: "Callanish Stones", location: [58.197541, -6.745145] },
-            { title: "Ring of Brodgar", location: [59.001482, -3.229723] },
-            { title: "Must Farm", location: [52.555236, -0.177319] },
-            { title: "Grimspound", location: [50.61331, -3.83738] },
-            { title: "Flag Fen", location: [52.574, -0.19] },
-            { title: "Beaghmore", location: [54.701466, -6.938701] },
-            { title: "Milton Keynes Hoard", location: [52.033, -0.711] },
-            { title: "Rillaton Barrow", location: [50.5211, -4.4557] },
-            { title: "Glastonbury Lake Village", location: [51.163611, -2.725833] },
-            { title: "Carn Euny", location: [50.10234, -5.63448] },
-            { title: "Old Oswestry Hillfort", location: [52.87273, -3.04886] },
-            { title: "Maiden Castle", location: [50.695, -2.47] },
-            { title: "Danebury Hill Fort", location: [51.136681, -1.537569] },
-            { title: "Honington Camp", location: [52.969925, -0.580756] },
-            { title: "Llyn Cerrig Bach", location: [53.25885, -4.540288] },
-            { title: "Roman Temple of Mithras", location: [51.5125, -0.0906] },
-            { title: "Roman Baths", location: [51.3809, -2.3595] },
-            { title: "Hoxne Hoard", location: [52.3425, 1.1875] },
-            { title: "Colchester Roman Town", location: [51.891944, 0.898056] },
-            { title: "Vindolanda", location: [54.9911, -2.3608] },
-            { title: "Housesteads Roman Fort", location: [55.013, -2.331] },
-            { title: "Bamburgh Castle", location: [55.608, -1.709] },
-            { title: "Lindisfarne Priory", location: [55.68, -1.8025] },
-            { title: "Repton Abbey", location: [52.841308, -1.55102] },
-            { title: "Bedale Hoard", location: [54.29, -1.59] },
-            { title: "Prittlewell Princely Burial", location: [51.55391, 0.70873] },
-            { title: "Sutton Hoo", location: [52.089, 1.338] },
-            { title: "Spong Hill", location: [52.737, 0.934] },
-            { title: "Canterbury Cathedral", location: [51.2797, 1.0831] },
-            { title: "Salisbury Cathedral", location: [51.064722, -1.7975] },
-            { title: "York Minster", location: [53.961944, -1.081944] },
-            { title: "Bodiam Castle", location: [51.0023, 0.5435] },
-            { title: "Caernarfon Castle", location: [53.1393, -4.2769] }
-        ];
+// Site data
+        var siteData = [ 
+                { name: "Paviland Cave", coordinates: [51.550144, -4.255517], age: "Paleolithic", type: "burial-hoard", image: "https://s0.geograph.org.uk/geophotos/02/97/73/2977336_4018a61a.jpg", link: "https://en.wikipedia.org/wiki/Red_Lady_of_Paviland" },
+                { name: "Kents Cavern", coordinates: [50.46772, -3.502676], age: "Paleolithic", type: "Cave-Early-Human-Occupation", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Kents_Cavern_%287036%29.jpg/800px-Kents_Cavern_%287036%29.jpg", link: "https://en.wikipedia.org/wiki/Kents_Cavern" },
+                { name: "Gough's Cave", coordinates: [51.2819, -2.7654], age: "Paleolithic", type: "Cave-Early-Human-Occupation", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Gough%27s_Cave%2C_Alladdin%27s_Cave.jpg/800px-Gough%27s_Cave%2C_Alladdin%27s_Cave.jpg", link: "https://en.wikipedia.org/wiki/Gough%27s_Cave" },
+                { name: "Creswell Crags", coordinates: [53.26347, -1.193535], age: "Paleolithic", type: "Cave-Early-Human-Occupation", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Caves_Creswell_Crags_-_geograph.org.uk_-_90873.jpg/375px-Caves_Creswell_Crags_-_geograph.org.uk_-_90873.jpg", link: "https://en.wikipedia.org/wiki/Creswell_Crags" },
+                { name: "Eartham Pit", coordinates: [50.869542, -0.689675], age: "Paleolithic", type: "Cave-Early-Human-Occupation", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Eartham_Pit%2C_Boxgrove.JPG/800px-Eartham_Pit%2C_Boxgrove.JPG", link: "https://en.wikipedia.org/wiki/Eartham_Pit,_Boxgrove" },
+                { name: "Swanscombe", coordinates: [51.444256, 0.296609], age: "Paleolithic", type: "Cave-Early-Human-Occupation", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monument_at_Swanscome_Heritage_Park.jpg/330px-Monument_at_Swanscome_Heritage_Park.jpg", link: "https://en.wikipedia.org/wiki/Swanscombe_Heritage_Park" },
+                { name: "Happisburgh", coordinates: [52.825278, 1.535], age: "Paleolithic", type: "Cave-Early-Human-Occupation", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Photographs_of_Area_A_at_Happisburgh_%282%29.png/800px-Photographs_of_Area_A_at_Happisburgh_%282%29.png", link: "https://en.wikipedia.org/wiki/Happisburgh_footprints" },
+                { name: "Star Carr", coordinates: [54.214167, -0.423333], age: "Mesolithic", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/View_of_Star_Carr_site_looking_NWW..jpg/330px-View_of_Star_Carr_site_looking_NWW..jpg", link: "https://en.wikipedia.org/wiki/Star_Carr" },
+                { name: "Howick", coordinates: [55.454, -1.593], age: "Mesolithic", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Reconstructed_Mesolithic_round-house_-_geograph.org.uk_-_1091110.jpg/375px-Reconstructed_Mesolithic_round-house_-_geograph.org.uk_-_1091110.jpg", link: "https://en.wikipedia.org/wiki/Howick_house" },
+                { name: "Low Hauxley", coordinates: [55.3184, -1.5512], age: "Mesolithic", type: "Settlement", image: "https://archaeologydataservice.ac.uk/researchframeworks/mesolithic/attach/Low_Hauxley/Low_Hauxley3.jpg", link: "https://archaeologydataservice.ac.uk/researchframeworks/mesolithic/wiki/Low_Hauxley" },
+                { name: "Llyn Fawr", coordinates: [51.719722, -3.568333], age: "Bronze Age", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/LlynFawr.jpg/396px-LlynFawr.jpg", link: "https://en.wikipedia.org/wiki/Llyn_Fawr" },
+                { name: "Mount Sandel", coordinates: [55.1161, -6.6642], age: "Mesolithic", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/UlsterMuseumPrehistoryMe_%28cropped%29.JPG/450px-UlsterMuseumPrehistoryMe_%28cropped%29.JPG", link: "https://en.wikipedia.org/wiki/Mount_Sandel_Mesolithic_site" },
+                { name: "Skara Brae", coordinates: [59.048714, -3.34175], age: "Neolithic", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/2018_07_12_Schottland_%2894%29.jpg/330px-2018_07_12_Schottland_%2894%29.jpg", link: "https://en.wikipedia.org/wiki/Skara_Brae" },
+                { name: "Pentre Ifan", coordinates: [51.999, -4.77], age: "Neolithic", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/DMPentreIfanSide.JPG/330px-DMPentreIfanSide.JPG", link: "https://en.wikipedia.org/wiki/Pentre_Ifan" },
+                { name: "Bryn Celli Ddu", coordinates: [53.2077, -4.2361], age: "Neolithic", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BrynCelliDdu3.jpg/330px-BrynCelliDdu3.jpg", link: "https://en.wikipedia.org/wiki/Bryn_Celli_Ddu" },
+                { name: "Stonehenge", coordinates: [51.178889, -1.826111], age: "Neolithic", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Stonehenge2007_07_30.jpg/330px-Stonehenge2007_07_30.jpg", link: "https://en.wikipedia.org/wiki/Stonehenge" },
+                { name: "Avebury", coordinates: [51.428611, -1.854167], age: "Neolithic", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Avebury_%28South_Inner_Circle%29%2C_Wiltshire%2C_UK_-_Diliff.jpg/330px-Avebury_%28South_Inner_Circle%29%2C_Wiltshire%2C_UK_-_Diliff.jpg", link: "https://en.wikipedia.org/wiki/Avebury" },
+                { name: "Silbury Hill", coordinates: [51.4157, -1.8574], age: "Neolithic", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/SilburyHill_gobeirne.jpg/330px-SilburyHill_gobeirne.jpg", link: "https://en.wikipedia.org/wiki/Silbury_Hill" },
+                { name: "Callanish Stones", coordinates: [58.197541, -6.745145], age: "Neolithic", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Callanish_at_sunset_-_geograph.org.uk_-_820680.jpg/360px-Callanish_at_sunset_-_geograph.org.uk_-_820680.jpg", link: "https://en.wikipedia.org/wiki/Callanish_Stones" },
+                { name: "Ring of Brodgar", coordinates: [59.001482, -3.229723], age: "Neolithic", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Ring_of_Brodgar_in_summer_2012_%283%29.JPG/330px-Ring_of_Brodgar_in_summer_2012_%283%29.JPG", link: "https://en.wikipedia.org/wiki/Ring_of_Brodgar" },
+                { name: "Must Farm", coordinates: [52.555236, -0.177319], age: "Bronze Age", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Must_Farm_CL3_4817_%2826447110732%29_crop.jpg/330px-Must_Farm_CL3_4817_%2826447110732%29_crop.jpg", link: "https://en.wikipedia.org/wiki/Must_Farm" },
+                { name: "Grimspound", coordinates: [50.61331, -3.83738], age: "Bronze Age", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Grimspound_Entrance.JPG/800px-Grimspound_Entrance.JPG", link: "https://en.wikipedia.org/wiki/Grimspound" },
+                { name: "Flag Fen", coordinates: [52.574, -0.19], age: "Bronze Age", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_fen_roundhouse.jpg/375px-Flag_fen_roundhouse.jpg", link: "https://en.wikipedia.org/wiki/Flag_Fen" },
+                { name: "Beaghmore", coordinates: [54.701466, -6.938701], age: "Bronze Age", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/A_stone_circle_at_Beaghmore..jpg/450px-A_stone_circle_at_Beaghmore..jpg", link: "https://en.wikipedia.org/wiki/Beaghmore" },
+                { name: "Milton Keynes Hoard", coordinates: [52.033, -0.711], age: "Bronze Age", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Milton_Keynes_Hoard.jpg/800px-Milton_Keynes_Hoard.jpg", link: "https://en.wikipedia.org/wiki/Milton_Keynes_Hoard" },
+                { name: "Rillaton Barrow", coordinates: [50.5211, -4.4557], age: "Bronze Age", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Blocked_up_entrance_to_Rillaton_Barrow.JPG/330px-Blocked_up_entrance_to_Rillaton_Barrow.JPG", link: "https://en.wikipedia.org/wiki/Rillaton_Barrow" },
+                { name: "Glastonbury Lake Village", coordinates: [51.163611, -2.725833], age: "Iron Age", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/c/c6/Excavation_of_Glastonbury_Lake_Village.jpg", link: "https://en.wikipedia.org/wiki/Glastonbury_Lake_Village" },
+                { name: "Carn Euny", coordinates: [50.10234, -5.63448], age: "Iron Age", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/CarnEuny1.jpg/330px-CarnEuny1.jpg", link: "https://en.wikipedia.org/wiki/Carn_Euny" },
+                { name: "Old Oswestry Hillfort", coordinates: [52.87273, -3.04886], age: "Iron Age", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Old_Oswestry_Hillfort_%28aerial%29.jpg/450px-Old_Oswestry_Hillfort_%28aerial%29.jpg", link: "https://en.wikipedia.org/wiki/Old_Oswestry" },
+                { name: "Maiden Castle", coordinates: [50.695, -2.47], age: "Iron Age", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Aerial_photograph_of_Maiden_Castle%2C_1935.jpg/330px-Aerial_photograph_of_Maiden_Castle%2C_1935.jpg", link: "https://en.wikipedia.org/wiki/Maiden_Castle,_Dorset" },
+                { name: "Danebury Hill Fort", coordinates: [51.136681, -1.537569], age: "Iron Age", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Danebury_Fort_-_aerial_image%2C_Hampshire_Data_Portal.jpg/330px-Danebury_Fort_-_aerial_image%2C_Hampshire_Data_Portal.jpg", link: "https://en.wikipedia.org/wiki/Danebury" },
+                { name: "Honington Camp", coordinates: [52.969925, -0.580756], age: "Iron Age", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Honington_Hill_Fort.jpg/1200px-Honington_Hill_Fort.jpg", link: "https://heritage-explorer.lincolnshire.gov.uk/Monument/MLI30366" },
+                { name: "Llyn Cerrig Bach", coordinates: [53.25885, -4.540288], age: "Iron Age", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/LlynCerrigBach.jpg/330px-LlynCerrigBach.jpg", link: "https://en.wikipedia.org/wiki/Llyn_Cerrig_Bach" },
+                { name: "Roman Temple of Mithras", coordinates: [51.5125, -0.0906], age: "Roman", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/London_Mithraeum.jpg/330px-London_Mithraeum.jpg", link: "https://en.wikipedia.org/wiki/London_Mithraeum" },
+                { name: "Roman Baths", coordinates: [51.3809, -2.3595], age: "Roman", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Ba%C3%B1os_Romanos%2C_Bath%2C_Inglaterra%2C_2014-08-12%2C_DD_39-41_HDR.JPG/330px-Ba%C3%B1os_Romanos%2C_Bath%2C_Inglaterra%2C_2014-08-12%2C_DD_39-41_HDR.JPG", link: "https://en.wikipedia.org/wiki/Roman_Baths_(Bath)" },
+                { name: "Hoxne Hoard", coordinates: [52.3425, 1.1875], age: "Roman", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Hoxne_Hoard_1.jpg/450px-Hoxne_Hoard_1.jpg", link: "https://en.wikipedia.org/wiki/Hoxne_Hoard" },
+                { name: "Colchester Roman Town", coordinates: [51.891944, 0.898056], age: "Roman", type: "Settlement", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Balkerne_Gate%2C_a_1st-century_Roman_gateway_in_Camulodunum%2C_it_is_the_largest_surviving_gateway_in_Roman_Britain%2C_Colchester%2C_Great_Britain_%2823282941975%29.jpg/330px-Balkerne_Gate%2C_a_1st-century_Roman_gateway_in_Camulodunum%2C_it_is_the_largest_surviving_gateway_in_Roman_Britain%2C_Colchester%2C_Great_Britain_%2823282941975%29.jpg", link: "https://en.wikipedia.org/wiki/Camulodunum" },
+                { name: "Vindolanda", coordinates: [54.9911, -2.3608], age: "Roman", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Vindolanda_bathhouse_-_2007-05-19.jpg/375px-Vindolanda_bathhouse_-_2007-05-19.jpg", link: "https://en.wikipedia.org/wiki/Vindolanda" },
+                { name: "Housesteads Roman Fort", coordinates: [55.013, -2.331], age: "Roman", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Housesteads_Roman_Fort_aerial.jpg/372px-Housesteads_Roman_Fort_aerial.jpg", link: "https://en.wikipedia.org/wiki/Housesteads_Roman_Fort" },
+                { name: "Bamburgh Castle", coordinates: [55.608, -1.709], age: "Anglo-Saxon", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Bamburgh_Castle%2C_beautiful_day.jpg/450px-Bamburgh_Castle%2C_beautiful_day.jpg", link: "https://en.wikipedia.org/wiki/Bamburgh_Castle" },
+                { name: "Lindisfarne Priory", coordinates: [55.68, -1.8025], age: "Anglo-Saxon", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Holy_Island_Sunrise_%28again%29_%2815064111624%29.jpg/360px-Holy_Island_Sunrise_%28again%29_%2815064111624%29.jpg", link: "https://en.wikipedia.org/wiki/Lindisfarne" },
+                { name: "Repton Abbey", coordinates: [52.841308, -1.55102], age: "Anglo-Saxon", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Repton_Church_CROPPED.jpg/330px-Repton_Church_CROPPED.jpg", link: "https://en.wikipedia.org/wiki/Repton_Abbey" },
+                { name: "Bedale Hoard", coordinates: [54.29, -1.59], age: "Anglo-Saxon", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Bedale_Hoard_Group_YORYM_2014_149.jpg/330px-Bedale_Hoard_Group_YORYM_2014_149.jpg", link: "https://en.wikipedia.org/wiki/Bedale_Hoard" },
+                { name: "Prittlewell Princely Burial", coordinates: [51.55391, 0.70873], age: "Anglo-Saxon", type: "burial-hoard", image: "https://www.prittlewellprincelyburial.org/_nuxt/img/c959e94.jpg", link: "https://www.prittlewellprincelyburial.org/" },
+                { name: "Sutton Hoo", coordinates: [52.089, 1.338], age: "Anglo-Saxon", type: "burial-hoard", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Sutton_Hoo_Burial_Mound_cleaned.jpg/330px-Sutton_Hoo_Burial_Mound_cleaned.jpg", link: "https://en.wikipedia.org/wiki/Sutton_Hoo" },
+                { name: "Spong Hill", coordinates: [52.737, 0.934], age: "Anglo-Saxon", type: "burial-hoard", image: "https://s0.geograph.org.uk/geophotos/05/89/25/5892535_653d9fee_original.jpg", link: "https://en.wikipedia.org/wiki/Spong_Hill" },
+                { name: "Canterbury Cathedral", coordinates: [51.2797, 1.0831], age: "Medieval", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Canterbury_Cathedral_-_Front.jpg/330px-Canterbury_Cathedral_-_Front.jpg", link: "https://en.wikipedia.org/wiki/Canterbury_Cathedral" },
+                { name: "Salisbury Cathedral", coordinates: [51.064722, -1.7975], age: "Medieval", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/SalisburyCathedral-wyrdlight-EastExt.jpg/330px-SalisburyCathedral-wyrdlight-EastExt.jpg", link: "https://en.wikipedia.org/wiki/Salisbury_Cathedral" },
+                { name: "York Minster", coordinates: [53.961944, -1.081944], age: "Medieval", type: "ceremonial-religious", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Yorkminster_near_sunset_8495.jpg/800px-Yorkminster_near_sunset_8495.jpg", link: "https://en.wikipedia.org/wiki/York_Minster" },
+                { name: "Bodiam Castle", coordinates: [51.0023, 0.5435], age: "Medieval", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Bodiam-castle-10My8-1197.jpg/1024px-Bodiam-castle-10My8-1197.jpg", link: "https://en.wikipedia.org/wiki/Bodiam_Castle" },
+                { name: "Caernarfon Castle", coordinates: [53.1393, -4.2769], age: "Medieval", type: "castle-fort", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Caernarfon_Castle_%287345%29.jpg/1024px-Caernarfon_Castle_%287345%29.jpg", link: "https://en.wikipedia.org/wiki/Caernarfon_Castle" } 
+            ];    
+  
+ // Click and zoom to site   
+    function zoomToSite(lat, lng, name) {
+        mymap.setView([lat, lng], 12);
+            if (marker) {
+            marker.openPopup();
+        }
+    }
 
-    sites.forEach(function(site) {
-        var marker = L.marker(site.location, { icon: myIcon, title: site.title }).bindPopup(site.title);
+// Site popups    
+    siteData.forEach(function(site) {
+        var popupContent = `
+            <strong>${site.name}</strong><br>
+            Age: ${site.age}<br>
+            Type: ${site.type}<br>
+            <img src="${site.image}" style="width:100%;"><br>
+            <a href="${site.link}" target="_blank">More Info</a>
+        `;
+        var marker = L.marker(site.coordinates, { icon: myIcon, title: site.name }).bindPopup(popupContent);
         marker.addTo(siteLayer);
     });
 
+// Search control setup
     var searchControl = new L.Control.Search({
         position: 'topleft',
         layer: siteLayer,
         propertyName: 'title',
         marker: false,
-        collapsed: false,  
+        collapsed: false,
         moveToLocation: function(latlng, title, map) {
-            console.log("Moving to location: ", latlng, "Title: ", title);  // Debugging output
-            map.setView(latlng, 12); // Set the zoom level here
-            var marker = siteLayer.getLayers().find(m => m.getPopup().getContent() === title);
-
+            map.setView(latlng, 10); // Set zoom level
+            var marker = siteLayer.getLayers().find(m => m.options.title === title);
+            if (marker) {
+                marker.openPopup();
+            }
         }
-    });
-
-    searchControl.on('search:locationfound', function(e) {
-        console.log("Search location found: ", e);  // Debugging output
     });
 
     mymap.addControl(searchControl);
 
     
-   // Define a custom control class for the zoom out button
+   // Custom control class for zoom out button
         var ZoomOutControl = L.Control.extend({
             onAdd: function(map) {
                 var button = L.DomUtil.create('button', 'custom-button');
                 button.title = 'Zoom Out to Original Extent';
                 button.onclick = function() {
-                    map.setView([54.25, -3.5], 6); // Set the map view to the original extent
+                    map.setView([54.7, -3.5], 6); // Set the map view to the original extent
                 };
                 return button;
             }
         });
-        // Add the custom control button to the map
         new ZoomOutControl().addTo(mymap); 
-    
+
+// Baselayers
         var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2NoYXVkaHVyaSIsImEiOiJjazBtcG5odG8wMDltM2JtcjdnYTgyanBnIn0.qwqjMomdrBMG36GQKXBlMw', {
             maxZoom: 18,
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
@@ -492,73 +682,15 @@
 
 L.control.layers(baseLayers, null, { collapsed: true }).addTo(mymap);
 
-// Add a scalebar 
+// Scalebar 
 L.control.scale({maxWidth: '150', metric: 'True'}).addTo(mymap);
 
-
-//Create locator map
+// Locator map
     var miniMap = new L.Control.MiniMap(L.tileLayer('https://api.maptiler.com/maps/topo/{z}/{x}/{y}.png?key=tZnptaeI9RvKHsX18rbW'), {
         toggleDisplay: true,
     }).addTo(mymap);
 
-
-// Site data
-    
-        var siteData = [ 
-                { name: "Paviland Cave", coordinates: [51.550144, -4.255517], age: "Paleolithic", type: "burial-hoard" },
-                { name: "Kents Cavern", coordinates: [50.46772, -3.502676], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
-                { name: "Gough's Cave", coordinates: [51.2819, -2.7654], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
-                { name: "Creswell Crags", coordinates: [53.26347, -1.193535], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
-                { name: "Eartham Pit", coordinates: [50.869542, -0.689675], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
-                { name: "Swanscombe", coordinates: [51.444256, 0.296609], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
-                { name: "Happisburgh", coordinates: [52.825278, 1.535], age: "Paleolithic", type: "Cave-Early-Human-Occupation" },
-                { name: "Star Carr", coordinates: [54.214167, -0.423333], age: "Mesolithic", type: "Settlement" },
-                { name: "Howick", coordinates: [55.454, -1.593], age: "Mesolithic", type: "Settlement" },
-                { name: "Oare Marshes", coordinates: [51.344, 0.886], age: "Mesolithic", type: "Settlement" },
-                { name: "Low Hauxley", coordinates: [55.3184, -1.5512], age: "Mesolithic", type: "Settlement" },
-                { name: "Llyn Fawr", coordinates: [51.719722, -3.568333], age: "Mesolithic", type: "Settlement" },
-                { name: "Mount Sandel", coordinates: [55.1161, -6.6642], age: "Mesolithic", type: "Settlement" },
-                { name: "Skara Brae", coordinates: [59.048714, -3.34175], age: "Neolithic", type: "Settlement" },
-                { name: "Pentre Ifan", coordinates: [51.999, -4.77], age: "Neolithic", type: "burial-hoard" },
-                { name: "Bryn Celli Ddu", coordinates: [53.2077, -4.2361], age: "Neolithic", type: "burial-hoard" },
-                { name: "Stonehenge", coordinates: [51.178889, -1.826111], age: "Neolithic", type: "ceremonial-religious" },
-                { name: "Avebury", coordinates: [51.428611, -1.854167], age: "Neolithic", type: "ceremonial-religious" },
-                { name: "Silbury Hill", coordinates: [51.4157, -1.8574], age: "Neolithic", type: "ceremonial-religious" },
-                { name: "Callanish Stones", coordinates: [58.197541, -6.745145], age: "Neolithic", type: "ceremonial-religious" },
-                { name: "Ring of Brodgar", coordinates: [59.001482, -3.229723], age: "Neolithic", type: "ceremonial-religious" },
-                { name: "Must Farm", coordinates: [52.555236, -0.177319], age: "Bronze Age", type: "Settlement" },
-                { name: "Grimspound", coordinates: [50.61331, -3.83738], age: "Bronze Age", type: "Settlement" },
-                { name: "Flag Fen", coordinates: [52.574, -0.19], age: "Bronze Age", type: "ceremonial-religious" },
-                { name: "Beaghmore", coordinates: [54.701466, -6.938701], age: "Bronze Age", type: "ceremonial-religious" },
-                { name: "Milton Keynes Hoard", coordinates: [52.033, -0.711], age: "Bronze Age", type: "burial-hoard" },
-                { name: "Rillaton Barrow", coordinates: [50.5211, -4.4557], age: "Bronze Age", type: "burial-hoard" },
-                { name: "Glastonbury Lake Village", coordinates: [51.163611, -2.725833], age: "Iron Age", type: "Settlement" },
-                { name: "Carn Euny", coordinates: [50.10234, -5.63448], age: "Iron Age", type: "Settlement" },
-                { name: "Old Oswestry Hillfort", coordinates: [52.87273, -3.04886], age: "Iron Age", type: "castle-fort" },
-                { name: "Maiden Castle", coordinates: [50.695, -2.47], age: "Iron Age", type: "castle-fort" },
-                { name: "Danebury Hill Fort", coordinates: [51.136681, -1.537569], age: "Iron Age", type: "castle-fort" },
-                { name: "Honington Camp", coordinates: [52.969925, -0.580756], age: "Iron Age", type: "castle-fort" },
-                { name: "Llyn Cerrig Bach", coordinates: [53.25885, -4.540288], age: "Iron Age", type: "burial-hoard" },
-                { name: "Roman Temple of Mithras", coordinates: [51.5125, -0.0906], age: "Roman", type: "ceremonial-religious" },
-                { name: "Roman Baths", coordinates: [51.3809, -2.3595], age: "Roman", type: "ceremonial-religious" },
-                { name: "Hoxne Hoard", coordinates: [52.3425, 1.1875], age: "Roman", type: "burial-hoard" },
-                { name: "Colchester Roman Town", coordinates: [51.891944, 0.898056], age: "Roman", type: "Settlement" },
-                { name: "Vindolanda", coordinates: [54.9911, -2.3608], age: "Roman", type: "castle-fort" },
-                { name: "Housesteads Roman Fort", coordinates: [55.013, -2.331], age: "Roman", type: "castle-fort" },
-                { name: "Bamburgh Castle", coordinates: [55.608, -1.709], age: "Anglo-Saxon", type: "castle-fort" },
-                { name: "Lindisfarne Priory", coordinates: [55.68, -1.8025], age: "Anglo-Saxon", type: "ceremonial-religious" },
-                { name: "Repton Abbey", coordinates: [52.841308, -1.55102], age: "Anglo-Saxon", type: "ceremonial-religious" },
-                { name: "Bedale Hoard", coordinates: [54.29, -1.59], age: "Anglo-Saxon", type: "burial-hoard" },
-                { name: "Prittlewell Princely Burial", coordinates: [51.55391, 0.70873], age: "Anglo-Saxon", type: "burial-hoard" },
-                { name: "Sutton Hoo", coordinates: [52.089, 1.338], age: "Anglo-Saxon", type: "burial-hoard" },
-                { name: "Spong Hill", coordinates: [52.737, 0.934], age: "Anglo-Saxon", type: "burial-hoard" },
-                { name: "Canterbury Cathedral", coordinates: [51.2797, 1.0831], age: "Medieval", type: "ceremonial-religious" },
-                { name: "Salisbury Cathedral", coordinates: [51.064722, -1.7975], age: "Medieval", type: "ceremonial-religious" },
-                { name: "York Minster", coordinates: [53.961944, -1.081944], age: "Medieval", type: "ceremonial-religious" },
-                { name: "Bodiam Castle", coordinates: [51.0023, 0.5435], age: "Medieval", type: "castle-fort" },
-                { name: "Caernarfon Castle", coordinates: [53.1393, -4.2769], age: "Medieval", type: "castle-fort" }
-            ];
-// Time periods ordered from earliest to latest
+// Time periods from earliest to latest
 
 const timePeriods = [
     "Paleolithic",
@@ -571,22 +703,37 @@ const timePeriods = [
     "Medieval"
 ];
 
-
 // Create markers and associate them with layers
 let markers = [];
 
+    
+// Function to zoom to marker location
+function zoomToMarker(latlng) {
+    mymap.setView(latlng, 10); // Adjust the zoom level as needed
+}    
+    
 siteData.forEach(site => {
     const customIcon = L.icon({
         iconUrl: `site-symbols/${site.name.toLowerCase().replace(/\s+/g, '-')}.png`, // URL to the custom icon image
         iconSize: [22, 36], // Adjust the size of the custom icon as needed
-        iconAnchor: [9, 32],
-        popupAnchor: [5, 5],
+        iconAnchor: [8, 32],
+        popupAnchor: [2, -12],
         
     });    
     
     const marker = L.marker(site.coordinates, {icon: customIcon, title: site.name})
-        .bindPopup(`<strong>${site.name}</strong><br>${site.age}<br>${site.description}`);
-   
+        .bindPopup(`
+        <strong>${site.name}</strong><br>
+        Age: ${site.age}<br>
+        <img src="${site.image}" alt="${site.name} Image" style="max-width: 200px; max-height: 200px;"><br>
+        <a href="${site.link}" target="_blank">More Info</a>
+    `);
+    
+// Add event listener to marker to zoom to its location when clicked
+    marker.on('click', function(e) {
+        zoomToMarker(e.latlng);
+    });
+        
 // Add marker to an array with additional info
     markers.push({
         marker: marker,
@@ -595,49 +742,46 @@ siteData.forEach(site => {
     });
 });
 
-
 // Function to update visible markers based on the slider and checkboxes
     
-function updateMarkers() {
-    const sliderValue = document.getElementById("timeSlider").value;
-    const selectedPeriod = timePeriods[sliderValue];
-    const selectedTypes = Array.from(document.querySelectorAll(".site-type:checked")).map(checkbox => checkbox.value);
+    function updateMarkers() {
+        const sliderValue = document.getElementById("timeSlider").value;
+        const selectedPeriod = timePeriods[sliderValue];
+        const selectedTypes = Array.from(document.querySelectorAll(".site-type:checked")).map(checkbox => checkbox.value);
 
-    // Hide all markers first
-    markers.forEach(obj => {
-        if (mymap.hasLayer(obj.marker)) {
-            mymap.removeLayer(obj.marker);
-        }
+        // Hide all markers first
+        markers.forEach(obj => {
+            if (mymap.hasLayer(obj.marker)) {
+                mymap.removeLayer(obj.marker);
+            }
+        });
+
+        // Show markers that meet the criteria
+        markers.forEach(obj => {
+            const periodIndex = timePeriods.indexOf(obj.age);
+            if (periodIndex <= sliderValue && selectedTypes.includes(obj.type)) {
+                obj.marker.addTo(mymap);
+            }
+        });
+
+        // Update label to show selected period
+        document.getElementById("currentPeriod").innerText = `Current Period: ${selectedPeriod}`;
+    }
+
+    // Add event listeners to checkboxes to trigger the updateMarkers function when they change
+
+    document.querySelectorAll(".site-type").forEach(checkbox => {
+        checkbox.addEventListener("change", updateMarkers);
     });
 
-    // Show markers that meet the criteria
-    markers.forEach(obj => {
-        const periodIndex = timePeriods.indexOf(obj.age);
-        if (periodIndex <= sliderValue && selectedTypes.includes(obj.type)) {
-            obj.marker.addTo(mymap);
-        }
-    });
+    // Initialize map and markers
+    document.getElementById("timeSlider").addEventListener("input", updateMarkers);
 
-    // Update label to show selected period
-    document.getElementById("currentPeriod").innerText = `Current Period: ${selectedPeriod}`;
-}
+    // Initially update markers based on the default slider value and selected checkboxes
+    updateMarkers();
 
-// Add event listeners to checkboxes to trigger the updateMarkers function when they change
-    
-document.querySelectorAll(".site-type").forEach(checkbox => {
-    checkbox.addEventListener("change", updateMarkers);
-});
-
-// Initialize map and markers
-document.getElementById("timeSlider").addEventListener("input", updateMarkers);
-    
-// Initially update markers based on the default slider value and selected checkboxes
-updateMarkers();
-    
-// BASELAYER CONTROLS
-L.control.layers(baseLayers).addTo(mymap);
-   
-    
+    // BASELAYER CONTROLS
+    L.control.layers(baseLayers).addTo(mymap);
 
 </script>
 
