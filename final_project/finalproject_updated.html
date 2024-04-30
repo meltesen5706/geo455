@@ -28,6 +28,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Duru+Sans&family=Port+Lligat+Sans&display=swap" rel="stylesheet">
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     
 <style>
@@ -362,34 +364,41 @@
     }
     
     .splash-screen {
-          position: fixed;
-          top: 30%;
-          left: 25%;
-          width: 45%;
-          height: 25%;
-          background-color: rgba(0, 0, 0, 0.7);
-          display: flex;
-          padding: 20px;
-          font-family: "Roboto", sans-serif;
-          justify-content: center;
-          align-items: center;
-          border-radius: 6px;
-          z-index: 9999;
-          overflow-y: auto; /* Enable vertical scroll if needed */
+        position: fixed;
+        top: 30%;
+        left: 25%;
+        width: 45%;
+        height: 25%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        padding: 20px;
+        font-family: "Roboto", sans-serif;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        z-index: 9999;
+        overflow-y: auto; /* Enable vertical scroll if needed */
+        display: none; /* Initially hidden */
     }
     .splash-content {
-          text-align: center;
-          color: white;
-    }   
+        text-align: center;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%; /* Ensure the content takes up the full height */
+    }
     /* Styling for the close button */
     .close-button {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          cursor: pointer;
-          color: white;
-          font-size: 24px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        color: white;
+        font-size: 24px;
     }
+    
 </style>
 </head>
 <body>
@@ -514,9 +523,14 @@
 <script>
 
     // Function to close the splash screen
-    function closeSplashScreen() {
-      document.getElementById("splash-screen").style.display = "none";
-    }
+function closeSplashScreen() {
+    $("#splash-screen").fadeOut(600); // Fades out the splash screen
+}
+
+// Function to fade in the splash screen when the map is loaded
+$(document).ready(function() {
+    $("#splash-screen").fadeIn(1200); // Fades in the splash screen
+});
     
     // toggle visibility of list
         function toggleList() {
