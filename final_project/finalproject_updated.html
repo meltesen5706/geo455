@@ -365,17 +365,17 @@
     
     .splash-screen {
         position: fixed;
-        top: 30%;
+        top: 25%;
         left: 25%;
         width: 45%;
-        height: 25%;
+        height: 40%;
         background-color: rgba(0, 0, 0, 0.7);
         display: flex;
         padding: 20px;
         font-family: "Roboto", sans-serif;
         justify-content: center;
         align-items: center;
-        border-radius: 6px;
+        border-radius: 10px;
         z-index: 9999;
         overflow-y: auto; /* Enable vertical scroll if needed */
         display: none; /* Initially hidden */
@@ -411,7 +411,7 @@
       <div class="splash-screen" id="splash-screen">
         <span class="close-button" onclick="closeSplashScreen()">&times;</span>
         <div class="splash-content">
-          <h1>Welcome to the Map!</h1><br>
+          <p style="font-size: 150%">Welcome to the Map!</p><br>
           <p style="font-size: 110%">The history of humans in the UK extends to over 900,000 years ago, during the Paleolithic period. Archaeologists have worked (and still work) to uncover this past and share it with the public, and yet many are still not familiar with the history right below their feet. This web map aims to expose viewers to a selection of the myriad of archaeological sites that exist in the UK today so that people have the opportunity to explore the past, from the Paleolithic all the way up to Medieval times (ca. 1500 AD). </p>
         </div>
       </div>
